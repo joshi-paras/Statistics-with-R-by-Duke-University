@@ -1,0 +1,3575 @@
+Jupyter NotebookLogout Untitled Last Checkpoint: 11 minutes ago (autosaved) Python 3
+Python 3 Trusted
+File
+Edit
+View
+Insert
+Cell
+Kernel
+Widgets
+Help
+
+In [8]:
+
+import requests
+import requests
+page = requests.get("https://www.cmu.edu/mscf/student-experience/meet-our-current-students/index.html")
+soup = BeautifulSoup(page.content, 'html.parser')
+In [9]:
+
+print(soup.prettify())
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Meet Our Current Students -     Master of Science in Computational Finance - Carnegie Mellon University
+  </title>
+  <meta content="Computational Finance Students, MSCF Students, Quant Finance Students, CMU Students" name="description"/>
+  <meta content="Carnegie Mellon University" name="author"/>
+  <meta content="Meet Our Current Students - Master of Science in Computational Finance - Carnegie Mellon University" property="og:title"/>
+  <meta content="Computational Finance Students, MSCF Students, Quant Finance Students, CMU Students" property="og:description"/>
+  <meta content="website" property="og:type"/>
+  <meta content="http://www.cmu.edu/mscf/student-experience/meet-our-current-students/index.html" property="og:url"/>
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,700,700italic" rel="stylesheet" type="text/css"/>
+  <link href="//www.cmu.edu/common/standard-v5.2/css/main.min.css" media="screen" rel="stylesheet" type="text/css"/>
+  <link href="//www.cmu.edu/common/standard-v5.2/css/print.min.css" media="print" rel="stylesheet" type="text/css"/>
+  <link href="//www.cmu.edu/favicon.ico" rel="icon"/>
+  <link href="//www.cmu.edu/favicon-152.png" rel="apple-touch-icon-precomposed"/>
+  <meta content="#9f0000" name="msapplication-TileColor"/>
+  <meta content="//www.cmu.edu/favicon-144.png" name="msapplication-TileImage"/>
+  <meta content="j1NVrlOe0TnBWnbaz9mkqIfcBVVON9zB4hUv87iVkkk" name="google-site-verification"/>
+  <!-- Google Tag Manager -->
+  <script>
+   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5QFW6PR');
+  </script>
+ </head>
+ <body class="no-js">
+  <div id="container">
+   <header>
+    <div class="roof red invert">
+     <div>
+      <a class="wordmark" href="//www.cmu.edu/">
+       Carnegie Mellon University
+      </a>
+      <a aria-haspopup="true" aria-label="Menu" class="menu-btn" href="#nav">
+       <b>
+        —
+       </b>
+       <b>
+        —
+       </b>
+       <b>
+        —
+       </b>
+      </a>
+      <form action="https://web-search.andrew.cmu.edu/search" class="search">
+       <input name="entqr" type="hidden" value="3"/>
+       <input name="entsp" type="hidden" value="a"/>
+       <input name="sort" type="hidden" value="date:D:L:d1"/>
+       <input name="output" type="hidden" value="xml_no_dtd"/>
+       <input name="client" type="hidden" value="default_frontend"/>
+       <input name="ud" type="hidden" value="1"/>
+       <input name="oe" type="hidden" value="UTF-8"/>
+       <input name="ie" type="hidden" value="UTF-8"/>
+       <input name="proxystylesheet" type="hidden" value="default_frontend"/>
+       <label>
+        <span>
+         Search
+        </span>
+        <input name="q" placeholder="Search" title="Type keywords into this box, then press enter."/>
+       </label>
+       <button title="Submit" type="submit">
+        Search
+       </button>
+       <label class="searchSite">
+        <span>
+         Search this site only
+        </span>
+        <input checked="checked" name="site" type="checkbox" value="mscf-2"/>
+       </label>
+      </form>
+     </div>
+    </div>
+    <div id="sitename">
+     <h1>
+      <a href="../../index.html">
+       Master of Science in Computational Finance
+      </a>
+     </h1>
+     <h2>
+      MSCF
+     </h2>
+    </div>
+   </header>
+   <div id="content">
+    <div class="breadcrumbs">
+     <a href="../../index.html">
+      Master of Science in Computational Finance
+     </a>
+     ›
+     <a href="../index.html">
+      Student Experience
+     </a>
+     ›              Meet Our Current Students
+    </div>
+    <div class="grid column4 photos" id="mscf-students">
+     <h1>
+      Meet Our Current Students
+     </h1>
+     <div class="photo">
+      <a href="2018-jalick.html">
+       <div>
+        <h2>
+         Justin    Alick
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Justin Alick" height="600" src="../../images/meet-our-students/cf18/jalick-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jandros.html">
+       <div>
+        <h2>
+         Joseph     Andros
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Joseph  Andros" height="600" src="../../images/meet-our-students/cf18/jandros-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yao.html">
+       <div>
+        <h2>
+         Yue    Ao
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yue Ao" height="600" src="../../images/meet-our-students/cf19/yao-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jbacon.html">
+       <div>
+        <h2>
+         Jeremy     Bacon
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jeremy  Bacon" height="600" src="../../images/meet-our-students/cf18/jbacon-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-lduarteb.html">
+       <div>
+        <h2>
+         Lucas  Duarte  Bahia
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Lucas Bahia" height="600" src="../../images/meet-our-students/cf19/iduarteb-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-maxwellb.html">
+       <div>
+        <h2>
+         Max    Blum
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Max Blum" height="600" src="../../images/meet-our-students/cf18/maxwellb-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-schandri.html">
+       <div>
+        <h2>
+         Spyridon    Chandrinos
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Spyridon Chandrinos" height="600" src="../../images/meet-our-students/cf19/schandri-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-chengc2.html">
+       <div>
+        <h2>
+         Cheng  Eric  Chen
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Cheng Chen" height="600" src="../../images/meet-our-students/cf18/chengc2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yutingc1.html">
+       <div>
+        <h2>
+         Elaine    Chen
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Elaine Chen" height="600" src="../../images/meet-our-students/cf18/yutingc1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-fanc1.html">
+       <div>
+        <h2>
+         Fan  Samuel  Chen
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Fan Chen" height="600" src="../../images/meet-our-students/cf18/fanc1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-ranc1.html">
+       <div>
+        <h2>
+         Rena    Chen
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Rena Chen" height="600" src="../../images/meet-our-students/cf18/ranc1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-xic4.html">
+       <div>
+        <h2>
+         Xi   Cecily  Chen
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Xi  Chen" height="600" src="../../images/meet-our-students/cf18/xic4-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yaoranc.html">
+       <div>
+        <h2>
+         Yaoran  Roger  Chen
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yaoran Chen" height="600" src="../../images/meet-our-students/cf18/yaoranc-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yuqic.html">
+       <div>
+        <h2>
+         Yuqi  Amy  Cheng
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yuqi Cheng" height="600" src="../../images/meet-our-students/cf18/yuqic-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-gic.html">
+       <div>
+        <h2>
+         Geoffrey    Ching
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Geoffrey Ching" height="600" src="../../images/meet-our-students/cf18/gic-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-xcong.html">
+       <div>
+        <h2>
+         Xinyu  Caroline  Cong
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Xinyu Cong" height="600" src="../../images/meet-our-students/cf18/xcong-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-drojasco.html">
+       <div>
+        <h2>
+         Daniel  Rojas  Coy
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Daniel Coy" height="600" src="../../images/meet-our-students/cf19/drojasco-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-ldaum.html">
+       <div>
+        <h2>
+         Logan    Daum
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Logan Daum" height="600" src="../../images/meet-our-students/cf18/idaum-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-weiaod.html">
+       <div>
+        <h2>
+         Will    Ding
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Will Ding" height="600" src="../../images/meet-our-students/cf19/weiaod-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-fangzhod.html">
+       <div>
+        <h2>
+         Fangzhou  Daniel  Dong
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Fangzhou Dong" height="600" src="../../images/meet-our-students/cf18/fangzhod-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-rdreizer.html">
+       <div>
+        <h2>
+         Robin    Dreizer
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Robin Dreizer" height="600" src="../../images/meet-our-students/cf19/rdreizer-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yunand.html">
+       <div>
+        <h2>
+         Yunan  Alex  Duan
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yunan Duan" height="600" src="../../images/meet-our-students/cf19/yunand-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-bduanmu.html">
+       <div>
+        <h2>
+         Bocheng  Kelvin  Duanmu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Bocheng Duanmu" height="600" src="../../images/meet-our-students/cf18/bduanmu-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-neterovi.html">
+       <div>
+        <h2>
+         Nicholas    Eterovic
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Nicholas Eterovic" height="600" src="../../images/meet-our-students/cf19/neterovi-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-nfrost.html">
+       <div>
+        <h2>
+         Nicholas    Frost
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Nicholas Frost" height="600" src="../../images/meet-our-students/cf19/nfrost-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jingjinf.html">
+       <div>
+        <h2>
+         Jennifer    Fu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jennifer Fu" height="600" src="../../images/meet-our-students/cf18/jingjinf-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-kangf1.html">
+       <div>
+        <h2>
+         Kang  Frank  Fu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Kang Fu" height="600" src="../../images/meet-our-students/cf18/kangf1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-agarrido.html">
+       <div>
+        <h2>
+         Alejandro    Garrido
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Alejandro Garrido" height="600" src="../../images/meet-our-students/cf18/agarrido-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-jgiebas.html">
+       <div>
+        <h2>
+         Jordan    Giebas
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Jordan Giebas" height="600" src="../../images/meet-our-students/cf19/jgiebas-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-cgomon.html">
+       <div>
+        <h2>
+         Corey    Gomon
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Corey Gomon" height="600" src="../../images/meet-our-students/cf18/cgomon-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-zhexing.html">
+       <div>
+        <h2>
+         Gabriel  Zhexin  Gu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Gabriel Gu" height="600" src="../../images/meet-our-students/cf18/zhexing-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-tianyoug.html">
+       <div>
+        <h2>
+         Tianyou  Tim  Gu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Tianyou Gu" height="600" src="../../images/meet-our-students/cf18/tianyoug-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-zhihang.html">
+       <div>
+        <h2>
+         Zhihan  Hannah  Gu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Zhihan Gu" height="600" src="../../images/meet-our-students/cf19/zhihang-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-bguo.html">
+       <div>
+        <h2>
+         Bochen  Derek  Guo
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Bochen Guo" height="600" src="../../images/meet-our-students/cf19/bguo-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jingyig1.html">
+       <div>
+        <h2>
+         Jingyi  Jill  Guo
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jingyi Guo" height="600" src="../../images/meet-our-students/cf18/jingyig1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-mingzheg.html">
+       <div>
+        <h2>
+         Minz  Mingzhe  Guo
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Minz Guo" height="600" src="../../images/meet-our-students/cf19/mingzheg-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-tusharg1.html">
+       <div>
+        <h2>
+         Tushar    Gupta
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Tushar Gupta" height="600" src="../../images/meet-our-students/cf19/tisharg1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-xipuh.html">
+       <div>
+        <h2>
+         Xipu    Han
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Xipu Han" height="600" src="../../images/meet-our-students/cf19/xipuh-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-phanagal.html">
+       <div>
+        <h2>
+         Pranav    Hanagal
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Pranav Hanagal" height="600" src="../../images/meet-our-students/cf18/phanagal-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-ahayat.html">
+       <div>
+        <h2>
+         Adil    Hayat
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Adil Hayat" height="600" src="../../images/meet-our-students/cf18/ahayat-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yhu2.html">
+       <div>
+        <h2>
+         Yang  Yolanda  Hu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yang Hu" height="600" src="../../images/meet-our-students/cf19/yhu2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yongkanh.html">
+       <div>
+        <h2>
+         Yongkang  Kevin  Hu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yongkang Hu" height="600" src="../../images/meet-our-students/cf18/yongkanh-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-shuranh.html">
+       <div>
+        <h2>
+         Shuran  Tina  Hua
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Shuran Hua" height="600" src="../../images/meet-our-students/cf19/shuranh-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-xinhuih1.html">
+       <div>
+        <h2>
+         Xinhui  Miffy  Huang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Xinhui Huang" height="600" src="../../images/meet-our-students/cf19/xinhuih1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-zhijianh.html">
+       <div>
+        <h2>
+         Zhijiang  Alex  Huang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Zhijiang Huang" height="600" src="../../images/meet-our-students/cf18/zhijianh-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-derekj.html">
+       <div>
+        <h2>
+         Derek    Jia
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Derek Jia" height="600" src="../../images/meet-our-students/cf18/derekj-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-ejian.html">
+       <div>
+        <h2>
+         Eric    Jian
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Eric Jian" height="600" src="../../images/meet-our-students/cf19/ejian-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-hongxuj.html">
+       <div>
+        <h2>
+         Hongxu  Harris  Jiang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Hongxu Jiang" height="600" src="../../images/meet-our-students/cf18/hongxuj-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-zihaoj.html">
+       <div>
+        <h2>
+         Zihao  Ryan  Jiang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Zihao Jiang" height="600" src="../../images/meet-our-students/cf18/zihaoj-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yanzhej.html">
+       <div>
+        <h2>
+         Yanzhe  Neal  Jin
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yanzhe Jin" height="600" src="../../images/meet-our-students/cf18/yanzhej-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yunqingj.html">
+       <div>
+        <h2>
+         Yunqing  Angela  Jin
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yunqing Jin" height="600" src="../../images/meet-our-students/cf19/yunqingj-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-dkasturi.html">
+       <div>
+        <h2>
+         Divya    Kasturirangan
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Divya Kasturirangan" height="600" src="../../images/meet-our-students/cf18/dkasturi-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-sailk.html">
+       <div>
+        <h2>
+         Sail    Kim
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Sail Kim" height="600" src="../../images/meet-our-students/cf19/sailk-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-elanauro.html">
+       <div>
+        <h2>
+         Eloy    Lanau-Rosello
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Eloy Lanau-Rosello" height="600" src="../../images/meet-our-students/cf19/elenauro-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-miaoyual.html">
+       <div>
+        <h2>
+         Miaoyuan  Rachel  Lang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Miaoyuan Lang" height="600" src="../../images/meet-our-students/cf19/miaoyual-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-fli1.html">
+       <div>
+        <h2>
+         Fei    Li
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Fei Li" height="600" src="../../images/meet-our-students/cf18/fli1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-feierl.html">
+       <div>
+        <h2>
+         Feier    Li
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Feier Li" height="600" src="../../images/meet-our-students/cf18/feierl-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-fengyinl.html">
+       <div>
+        <h2>
+         Fengying  Crystal  Li
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Fengying Li" height="600" src="../../images/meet-our-students/cf18/fengyinl-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yezil.html">
+       <div>
+        <h2>
+         Jessie    Li
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jessie Li" height="600" src="../../images/meet-our-students/cf18/yezil-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yananl.html">
+       <div>
+        <h2>
+         Yanan    Li
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yanan Li" height="600" src="../../images/meet-our-students/cf18/yananl-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yingqil.html">
+       <div>
+        <h2>
+         Yingqi  Bill  Li
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yingqi Li" height="600" src="../../images/meet-our-students/cf18/yingqil-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yuanshel.html">
+       <div>
+        <h2>
+         Yuanshen  Kevin  Li
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yuanshen Li" height="600" src="../../images/meet-our-students/cf18/yuanshel-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yunyaol.html">
+       <div>
+        <h2>
+         Yunyao    Li
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yunyao Li" height="600" src="../../images/meet-our-students/cf19/yunyaol-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-zhongyal.html">
+       <div>
+        <h2>
+         Zhongyang    Li
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Zhongyang Li" height="600" src="../../images/meet-our-students/cf19/zhongyal-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-hliang1.html">
+       <div>
+        <h2>
+         Thomas    Liang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Thomas Liang" height="600" src="../../images/meet-our-students/cf19/hliang1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jingyil3.html">
+       <div>
+        <h2>
+         Jingyi    Lin
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jingyi Lin" height="600" src="../../images/meet-our-students/cf18/jingyil3-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-slin1.html">
+       <div>
+        <h2>
+         Joyce  Shiqi  Lin
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Joyce Lin" height="600" src="../../images/meet-our-students/cf19/slin1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-kaiekl.html">
+       <div>
+        <h2>
+         Ka Iek  Tommy  Lin
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Ka Iek Lin" height="600" src="../../images/meet-our-students/cf19/kaiekl-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-wenyil.html">
+       <div>
+        <h2>
+         Wenyi  Amelie  Lin
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Wenyi Lin" height="600" src="../../images/meet-our-students/cf18/wenyil-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-zixianl.html">
+       <div>
+        <h2>
+         Zixian  Francis  Lin
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Zixian Lin" height="600" src="../../images/meet-our-students/cf18/zixianl-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-chaol2.html">
+       <div>
+        <h2>
+         Chao  Leon  Liu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Chao Liu" height="600" src="../../images/meet-our-students/cf18/chaol2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-gliu1.html">
+       <div>
+        <h2>
+         Guannan  Nick  Liu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Guannan Liu" height="600" src="../../images/meet-our-students/cf19/gliu1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-haozunl.html">
+       <div>
+        <h2>
+         Haozun  Harrison  Liu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Haozun Liu" height="600" src="../../images/meet-our-students/cf18/haozuni-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-ruochonl.html">
+       <div>
+        <h2>
+         Ruochong  Jared  Liu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Ruochong Liu" height="600" src="../../images/meet-our-students/cf19/ruochonl-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-sidil1.html">
+       <div>
+        <h2>
+         Sidi  Sindy  Liu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Sidi Liu" height="600" src="../../images/meet-our-students/cf19/sidil1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-tengl.html">
+       <div>
+        <h2>
+         Teng    Liu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Teng Liu" height="600" src="../../images/meet-our-students/cf18/tengl-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-xiaopenl.html">
+       <div>
+        <h2>
+         Xiaopeng  Lily  Liu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Xiaopeng Liu" height="600" src="../../images/meet-our-students/cf18/xiaopenl-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-xinhel.html">
+       <div>
+        <h2>
+         Xinhe  Charles  Liu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Xinhe Liu" height="600" src="../../images/meet-our-students/cf18/xinhel-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yundongl.html">
+       <div>
+        <h2>
+         Yundong  Allen  Liu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yundong Liu" height="600" src="../../images/meet-our-students/cf19/yundong1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yuzel.html">
+       <div>
+        <h2>
+         Yuze    Liu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yuze Liu" height="600" src="../../images/meet-our-students/cf19/yuzel-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-shangshl.html">
+       <div>
+        <h2>
+         Shangshang  Cheryl  Long
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Shangshang Long" height="600" src="../../images/meet-our-students/cf19/shangshl-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yufanl.html">
+       <div>
+        <h2>
+         Bruce   Yufan  Lu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Bruce  Lu" height="600" src="../../images/meet-our-students/cf18/yufanl-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-nlu1.html">
+       <div>
+        <h2>
+         Ning  Steve  Lu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Ning Lu" height="600" src="../../images/meet-our-students/cf18/nlu1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-zhoul1.html">
+       <div>
+        <h2>
+         Zhou    Lu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Zhou Lu" height="600" src="../../images/meet-our-students/cf19/zhoul1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yiliem.html">
+       <div>
+        <h2>
+         Austin    Ma
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Austin Ma" height="600" src="../../images/meet-our-students/cf19/yiliem-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-rouzhenm.html">
+       <div>
+        <h2>
+         Rouzhen  Carol  Ma
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Rouzhen Ma" height="600" src="../../images/meet-our-students/cf18/rouzhenm-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yipingm.html">
+       <div>
+        <h2>
+         Yiping  Kevin  Ma
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yiping Ma" height="600" src="../../images/meet-our-students/cf18/yipingm-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-kmei.html">
+       <div>
+        <h2>
+         Kai    Mei
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Kai Mei" height="600" src="../../images/meet-our-students/cf19/kmei-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-zmei.html">
+       <div>
+        <h2>
+         Zhusong  Jay  Mei
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Zhusong Mei" height="600" src="../../images/meet-our-students/cf19/zmei-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-siliangn.html">
+       <div>
+        <h2>
+         Spencer  Siliang  Ni
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Spencer Ni" height="600" src="../../images/meet-our-students/cf19/siliangn-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-hoberoi.html">
+       <div>
+        <h2>
+         Harveen    Oberoi
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Harveen Oberoi" height="600" src="../../images/meet-our-students/cf19/hoberoi-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-nou.html">
+       <div>
+        <h2>
+         Nan  George  Ou
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Nan Ou" height="600" src="../../images/meet-our-students/cf18/nou-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-zimoo.html">
+       <div>
+        <h2>
+         Zimo  Jerry  Ouyang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Zimo Ouyang" height="600" src="../../images/meet-our-students/cf18/zimoo-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-chaitanp.html">
+       <div>
+        <h2>
+         Chaitanya    Patel
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Chaitanya Patel" height="600" src="../../images/meet-our-students/cf18/chaitanp-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-swatip.html">
+       <div>
+        <h2>
+         Swati    Pathak
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Swati Pathak" height="600" src="../../images/meet-our-students/cf18/swatip-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-epearces.html">
+       <div>
+        <h2>
+         Eric    Pearce-Smith
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Eric Pearce-Smith" height="600" src="../../images/meet-our-students/cf19/epearces-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jpekelis.html">
+       <div>
+        <h2>
+         Jacob    Pekelis
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jacob Pekelis" height="600" src="../../images/meet-our-students/cf18/jpekelis-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-guillerp.html">
+       <div>
+        <h2>
+         Guillermo    Perez
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Guillermo Perez" height="600" src="../../images/meet-our-students/cf18/guillerp-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jplatts.html">
+       <div>
+        <h2>
+         Jordan    Platts
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jordan Platts" height="600" src="../../images/meet-our-students/cf18/jplatts-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-aprevic.html">
+       <div>
+        <h2>
+         Andrew    Previc
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Andrew Previc" height="600" src="../../images/meet-our-students/cf19/aprevic-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-zhengyaq.html">
+       <div>
+        <h2>
+         Zhengyang  David  Qi
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Zhengyang Qi" height="600" src="../../images/meet-our-students/cf19/zhengyaq-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-liyunshq.html">
+       <div>
+        <h2>
+         Iris    Qian
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Iris Qian" height="600" src="../../images/meet-our-students/cf19/liyunshq-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-fenq.html">
+       <div>
+        <h2>
+         Frank    Qin
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Frank Qin" height="600" src="../../images/meet-our-students/cf19/fenq-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-shenchaq.html">
+       <div>
+        <h2>
+         Shenchao    Qiu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Shenchao Qiu" height="600" src="../../images/meet-our-students/cf18/shenchaq-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-xuetingq.html">
+       <div>
+        <h2>
+         Xueting  Sherry  Qiu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Xueting Qiu" height="600" src="../../images/meet-our-students/cf18/xuetingq-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-fquimby.html">
+       <div>
+        <h2>
+         Francis    Quimby
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Francis Quimby" height="600" src="../../images/meet-our-students/cf19/fquimby-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-gravi.html">
+       <div>
+        <h2>
+         Giri  Seshadri  Ravi
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Giri Ravi" height="600" src="../../images/meet-our-students/cf19/gravi-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-crong.html">
+       <div>
+        <h2>
+         Cheng  Jacob  Rong
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Cheng Rong" height="600" src="../../images/meet-our-students/cf18/crong-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-xuer.html">
+       <div>
+        <h2>
+         Xue    Rong
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Xue Rong" height="600" src="../../images/meet-our-students/cf19/xuer-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-rrosenba.html">
+       <div>
+        <h2>
+         Richard    Rosenbaum
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Richard Rosenbaum" height="600" src="../../images/meet-our-students/cf19/rrosenba-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jrunarss.html">
+       <div>
+        <h2>
+         Jon  Arni  Runarsson
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jon Runarsson" height="600" src="../../images/meet-our-students/cf18/jrunarss-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-shaofeis.html">
+       <div>
+        <h2>
+         Shaofei    Sang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Shaofei Sang" height="600" src="../../images/meet-our-students/cf18/shaofeis-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-asemakhi.html">
+       <div>
+        <h2>
+         Anna    Semakhin
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Anna Semakhin" height="600" src="../../images/meet-our-students/cf19/asemakhi-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-zhuoches.html">
+       <div>
+        <h2>
+         Alan  Zhuo Cheng  Shen
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Alan Shen" height="600" src="../../images/meet-our-students/cf18/zhuoches-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-rshen1.html">
+       <div>
+        <h2>
+         Rui  Stella  Shen
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Rui Shen" height="600" src="../../images/meet-our-students/cf19/rshen1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yiyangs1.html">
+       <div>
+        <h2>
+         Yiyang    Shen
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yiyang Shen" height="600" src="../../images/meet-our-students/cf18/yiyangs1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-hshi1.html">
+       <div>
+        <h2>
+         Hanjie  Steven  Shi
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Hanjie Shi" height="600" src="../../images/meet-our-students/cf18/hshi1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-zhongwes.html">
+       <div>
+        <h2>
+         Zhongwei  Peter  Shi
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Zhongwei Shi" height="600" src="../../images/meet-our-students/cf19/zhongwes-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-ssoltani.html">
+       <div>
+        <h2>
+         Skander    Soltani
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Skander Soltani" height="600" src="../../images/meet-our-students/cf19/ssoltani-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-wenshuos.html">
+       <div>
+        <h2>
+         Cindy  Wen Shuo  Song
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Cindy Song" height="600" src="../../images/meet-our-students/cf19/wenshuos-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-haozes.html">
+       <div>
+        <h2>
+         Haoze  Patrick  Song
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Haoze Song" height="600" src="../../images/meet-our-students/cf19/haozes-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-esumner.html">
+       <div>
+        <h2>
+         Elizabeth    Sumner
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Elizabeth Sumner" height="600" src="../../images/meet-our-students/cf19/esumner-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-bins.html">
+       <div>
+        <h2>
+         Bin    Sun
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Bin Sun" height="600" src="../../images/meet-our-students/cf19/bins-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-qis.html">
+       <div>
+        <h2>
+         Qi  Quentin  Sun
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Qi Sun" height="600" src="../../images/meet-our-students/cf19/qis-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-qsun.html">
+       <div>
+        <h2>
+         Qianya  Maggie  Sun
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Qianya Sun" height="600" src="../../images/meet-our-students/cf18/qsun-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-stagawa.html">
+       <div>
+        <h2>
+         Shinsaku    Tagawa
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Shinsaku Tagawa" height="600" src="../../images/meet-our-students/cf18/stagawa-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yijingt.html">
+       <div>
+        <h2>
+         Yijing  Steve  Tao
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yijing Tao" height="600" src="../../images/meet-our-students/cf18/yijingt-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-htoda.html">
+       <div>
+        <h2>
+         Hiroyuki    Toda
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Hiroyuki Toda" height="600" src="../../images/meet-our-students/cf19/htoda-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-chifengt.html">
+       <div>
+        <h2>
+         Chi-Feng  Foster  Tsai
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Chi-Feng Tsai" height="600" src="../../images/meet-our-students/cf19/chifengt-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-haobow1.html">
+       <div>
+        <h2>
+         Haobo  Hilbert  Wang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Haobo Wang" height="600" src="../../images/meet-our-students/cf18/haobow1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-liw2.html">
+       <div>
+        <h2>
+         Li    Wang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Li Wang" height="600" src="../../images/meet-our-students/cf19/liw2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-tianjiaw.html">
+       <div>
+        <h2>
+         Tianjiao  Jill  Wang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Tianjiao Wang" height="600" src="../../images/meet-our-students/cf19/tianjiaw-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-weizhouw.html">
+       <div>
+        <h2>
+         Weizhou  Wei  Wang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Weizhou Wang" height="600" src="../../images/meet-our-students/cf19/weizhouw-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yujuew.html">
+       <div>
+        <h2>
+         Yujue  Barbara  Wang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yujue Wang" height="600" src="../../images/meet-our-students/cf18/yujuew-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yuxiw.html">
+       <div>
+        <h2>
+         Yuxi  Brenda  Wang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yuxi Wang" height="600" src="../../images/meet-our-students/cf18/yuxiw-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-zhongcaw.html">
+       <div>
+        <h2>
+         Zhongcan  Vito  Wang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Zhongcan Wang" height="600" src="../../images/meet-our-students/cf18/zhongcaw-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-rwei1.html">
+       <div>
+        <h2>
+         Ran    Wei
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Ran Wei" height="600" src="../../images/meet-our-students/cf19/rwei1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yaow1.html">
+       <div>
+        <h2>
+         Yao    Wei
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yao Wei" height="600" src="../../images/meet-our-students/cf18/yaow1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-hwen2.html">
+       <div>
+        <h2>
+         Hao    Wen
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Hao Wen" height="600" src="../../images/meet-our-students/cf19/hwen2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-gew1.html">
+       <div>
+        <h2>
+         Ge  Bonnie  Wu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Ge Wu" height="600" src="../../images/meet-our-students/cf19/gew1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-mingxuaw.html">
+       <div>
+        <h2>
+         Mingxuan  Marco  Wu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Mingxuan Wu" height="600" src="../../images/meet-our-students/cf19/mingxuaw-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-shuyingw.html">
+       <div>
+        <h2>
+         Shuying  Ruby  Wu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Shuying Wu" height="600" src="../../images/meet-our-students/cf19/shuyingw-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-ziyouw.html">
+       <div>
+        <h2>
+         Ziyou  Will  Wu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Ziyou Wu" height="600" src="../../images/meet-our-students/cf18/ziyouw-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jingxinx.html">
+       <div>
+        <h2>
+         Jingxin  Cynthia  Xi
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jingxin Xi" height="600" src="../../images/meet-our-students/cf18/jingxinx-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-dingkunx.html">
+       <div>
+        <h2>
+         Dingkun    Xiao
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Dingkun Xiao" height="600" src="../../images/meet-our-students/cf18/dingkunx_29347-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jxiao1.html">
+       <div>
+        <h2>
+         Jeremy  Jia  Xiao
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jeremy Xiao" height="600" src="../../images/meet-our-students/cf18/jxiao1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-wenyex.html">
+       <div>
+        <h2>
+         Wenya  Vanessa  Xiao
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Wenya Xiao" height="600" src="../../images/meet-our-students/cf18/wenyex-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-mengdax.html">
+       <div>
+        <h2>
+         Mengda    Xu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Mengda Xu" height="600" src="../../images/meet-our-students/cf19/mengdax-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-pxu1.html">
+       <div>
+        <h2>
+         Pengfei    Xu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Pengfei Xu" height="600" src="../../images/meet-our-students/cf18/pxu1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-qiyangx.html">
+       <div>
+        <h2>
+         Qiyang  Amy  Xu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Qiyang Xu" height="600" src="../../images/meet-our-students/cf19/qiyangx-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-siyuanx.html">
+       <div>
+        <h2>
+         Siyuan  Warren  Xu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Siyuan Xu" height="600" src="../../images/meet-our-students/cf18/siyuanx-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yuhaox.html">
+       <div>
+        <h2>
+         Yuhao  Uriz  Xu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yuhao Xu" height="600" src="../../images/meet-our-students/cf18/yuhaox-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-chunxiuy.html">
+       <div>
+        <h2>
+         Chunxiu  Candice  Yan
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Chunxiu Yan" height="600" src="../../images/meet-our-students/cf18/chunxiuy-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-lyan1.html">
+       <div>
+        <h2>
+         Li    Yan
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Li Yan" height="600" src="../../images/meet-our-students/cf19/lyan1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-linglony.html">
+       <div>
+        <h2>
+         Linglong    Yan
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Linglong Yan" height="600" src="../../images/meet-our-students/cf19/linglony-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-haiyiny1.html">
+       <div>
+        <h2>
+         Haiyin  Elsie  Yang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Haiyin Yang" height="600" src="../../images/meet-our-students/cf19/haiyiny1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-ningy.html">
+       <div>
+        <h2>
+         Ning    Yang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Ning Yang" height="600" src="../../images/meet-our-students/cf18/ningy-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-wangshuy.html">
+       <div>
+        <h2>
+         Wangshu    Yang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Wangshu Yang" height="600" src="../../images/meet-our-students/cf19/wangshuy-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-zey.html">
+       <div>
+        <h2>
+         Ze  Xavier  Yang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Ze Yang" height="600" src="../../images/meet-our-students/cf19/zey-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-ajyeoh.html">
+       <div>
+        <h2>
+         Adelyn    Yeoh
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Adelyn Yeoh" height="600" src="../../images/meet-our-students/cf18/ajyeoh-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-mengjiay.html">
+       <div>
+        <h2>
+         Mengjia    Yi
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Mengjia Yi" height="600" src="../../images/meet-our-students/cf19/mengjiay-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-yyi2.html">
+       <div>
+        <h2>
+         Yan  Eva  Yi
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Yan Yi" height="600" src="../../images/meet-our-students/cf18/yyi2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-kailey.html">
+       <div>
+        <h2>
+         Kaile    Yin
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Kaile Yin" height="600" src="../../images/meet-our-students/cf19/kailey-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yany2.html">
+       <div>
+        <h2>
+         Yan  Credo  Yu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yan Yu" height="600" src="../../images/meet-our-students/cf19/yany2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-rishengz.html">
+       <div>
+        <h2>
+         Risheng  Jordan  Zeng
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Risheng Zeng" height="600" src="../../images/meet-our-students/cf19/rishengz-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-chenz2.html">
+       <div>
+        <h2>
+         Chen  Olivia  Zhang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Chen Zhang" height="600" src="../../images/meet-our-students/cf18/chenz2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-daweiz.html">
+       <div>
+        <h2>
+         Dawei    Zhang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Dawei Zhang" height="600" src="../../images/meet-our-students/cf18/daweiz-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-jiawenz2.html">
+       <div>
+        <h2>
+         Jiawen  Jessica  Zhang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Jiawen Zhang" height="600" src="../../images/meet-our-students/cf18/jiawenz2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-weiliz1.html">
+       <div>
+        <h2>
+         Jill    Zhang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Jill Zhang" height="600" src="../../images/meet-our-students/cf19/weiliz1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-xiaoz3.html">
+       <div>
+        <h2>
+         Xiao  Sean  Zhang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Xiao Zhang" height="600" src="../../images/meet-our-students/cf19/xiaoz3-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-xiaoche2.html">
+       <div>
+        <h2>
+         Xiaochen  Aaron  Zhang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Xiaochen Zhang" height="600" src="../../images/meet-our-students/cf18/xiaoche2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-xigez.html">
+       <div>
+        <h2>
+         Xige  Nicole  Zhang
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Xige Zhang" height="600" src="../../images/meet-our-students/cf18/xigez-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yixinz2.html">
+       <div>
+        <h2>
+         Yixin  Cecily  Zhang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yixin Zhang" height="600" src="../../images/meet-our-students/cf19/yixinz2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yumengz.html">
+       <div>
+        <h2>
+         Yumeng    Zhang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yumeng Zhang" height="600" src="../../images/meet-our-students/cf19/yumengz-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-yuyaoz.html">
+       <div>
+        <h2>
+         Yuyao    Zhang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Yuyao Zhang" height="600" src="../../images/meet-our-students/cf19/yuyaoz-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-zhaohuiz.html">
+       <div>
+        <h2>
+         Zhaohui  Heather  Zhang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Zhaohui Zhang" height="600" src="../../images/meet-our-students/cf19/zhaohuiz-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-zhiyiz.html">
+       <div>
+        <h2>
+         Zhiyi  Raymond  Zhang
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Zhiyi Zhang" height="600" src="../../images/meet-our-students/cf19/zhiyiz-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-chuanyiz.html">
+       <div>
+        <h2>
+         Chuanyi  Allen  Zhao
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Chuanyi Zhao" height="600" src="../../images/meet-our-students/cf18/chuanyiz-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-lzhao2.html">
+       <div>
+        <h2>
+         Lei    Zhao
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Lei Zhao" height="600" src="../../images/meet-our-students/cf19/lzhao2-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-zhenzhez.html">
+       <div>
+        <h2>
+         Zhenzhen    Zhao
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Zhenzhen Zhao" height="600" src="../../images/meet-our-students/cf18/zhenzhez-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-dzhong.html">
+       <div>
+        <h2>
+         Dayu    Zhong
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Dayu Zhong" height="600" src="../../images/meet-our-students/cf19/dzhong-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-hzhong1.html">
+       <div>
+        <h2>
+         Han  April  Zhong
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Han Zhong" height="600" src="../../images/meet-our-students/cf18/hzhong1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-fangqiuz.html">
+       <div>
+        <h2>
+         Fangqiu  Jackie  Zhou
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Fangqiu Zhou" height="600" src="../../images/meet-our-students/cf19/fangqiuz-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-junyiz.html">
+       <div>
+        <h2>
+         Junyi  Bill  Zhou
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Junyi Zhou" height="600" src="../../images/meet-our-students/cf18/junyiz-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2019-jianing1.html">
+       <div>
+        <h2>
+         Jianing  Christina  Zhu
+        </h2>
+        <p>
+         Class of 2019
+        </p>
+       </div>
+       <span>
+        <img alt="Jianing Zhu" height="600" src="../../images/meet-our-students/cf19/jianing1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-manz.html">
+       <div>
+        <h2>
+         Man  Sidney  Zhu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Man Zhu" height="600" src="../../images/meet-our-students/cf18/manz-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-shansha1.html">
+       <div>
+        <h2>
+         Shanshan    Zhu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Shanshan Zhu" height="600" src="../../images/meet-our-students/cf18/shansha1-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+     <div class="photo">
+      <a href="2018-xzhu3.html">
+       <div>
+        <h2>
+         Xin  Zoey  Zhu
+        </h2>
+        <p>
+         Class of 2018
+        </p>
+       </div>
+       <span>
+        <img alt="Xin Zhu" height="600" src="../../images/meet-our-students/cf18/xzhu3-min.png" width="600"/>
+       </span>
+      </a>
+     </div>
+    </div>
+    <div class="content">
+     <div>
+      <em>
+       Note: This is not a comprehensive list of all MSCF students.
+       <br/>
+       Participation in the MSCF Meet Our Current Students gallery is voluntary.
+      </em>
+     </div>
+    </div>
+    <div class="grid column3 red invert nav">
+     <div>
+      <p>
+       <strong>
+        <a href="../pittsburgh-campus.html">
+         Pittsburgh Campus
+        </a>
+       </strong>
+       <br/>
+       Tepper School of Business
+       <br/>
+       Carnegie Mellon University
+       <br/>
+       Pittsburgh, PA 15213
+       <br/>
+       Office:
+       <a href="tel:412.268.3629">
+        (412) 268-
+        <span>
+         3629
+        </span>
+       </a>
+      </p>
+     </div>
+     <div>
+      <p>
+       <strong>
+        <a href="../ny-campus.html">
+         New York Campus
+         <br/>
+        </a>
+       </strong>
+       Carnegie Mellon University
+       <br/>
+       55 Broad Street, 5th Floor
+       <br/>
+       New York, NY 10004
+       <br/>
+       Office:
+       <a href="tel:412.268.8446">
+        (412) 268-8446
+       </a>
+      </p>
+     </div>
+     <div>
+      <p>
+       <strong>
+        <a href="../../admissions/index.html">
+         MSCF Admissions
+         <br/>
+        </a>
+       </strong>
+       Carnegie Mellon University
+       <br/>
+       Pittsburgh, PA 15213
+       <br/>
+       Phone:
+       <a href="tel:412.268.3679">
+        (412) 268-3679
+       </a>
+       <br/>
+       <a href="mailto:mscf-admissions@andrew.cmu.edu?subject=MSCF:%20Admission%20Question">
+        mscf-admissions@andrew.cmu.edu
+       </a>
+      </p>
+     </div>
+    </div>
+    <footer class="grid column3 invert">
+     <div>
+      <p>
+       Carnegie Mellon University
+       <br/>
+       5000 Forbes Avenue
+       <br/>
+       Pittsburgh, PA 15213
+       <br/>
+       <a href="mailto:mscf@cmu.edu">
+        Contact Us
+       </a>
+      </p>
+      <ul>
+       <li>
+        <a href="//www.cmu.edu/legal/" target="_blank">
+         Legal Info
+        </a>
+       </li>
+       <li>
+        <a href="//www.cmu.edu/">
+         www.cmu.edu
+        </a>
+       </li>
+      </ul>
+      <ul>
+       <li>
+        © 2016 Carnegie Mellon University
+       </li>
+      </ul>
+     </div>
+     <div>
+      <ul class="social third">
+       <li>
+        <a class="facebook" href="https://www.facebook.com/MSCFCMU" target="_blank">
+         CMU on Facebook
+        </a>
+       </li>
+       <li>
+        <a class="twitter" href="https://twitter.com/compfinancecmu" target="_blank">
+         CMU on Twitter
+        </a>
+       </li>
+       <li>
+        <a class="linkedin" href="https://www.linkedin.com/company/mscf-program-at-carnegie-mellon" target="_blank">
+         CMU on LinkedIn
+        </a>
+       </li>
+       <li>
+        <a class="youtube" href="https://www.youtube.com/playlist?list=PLKlAaRGVRcbLT37gnW--Urqx6O12hLttu" target="_blank">
+         CMU YouTube Channel
+        </a>
+       </li>
+       <li>
+        <a class="instagram" href="https://www.instagram.com/mscfcmu/" target="_blank">
+         CMU on Instagram
+        </a>
+       </li>
+       <li>
+        <a class="more" href="../../news/index.html" target="_self" title="More Social Networks">
+         CMU Social Media Directory
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div>
+      <nav id="nav">
+       <ul>
+        <li class="">
+         <a href="../../academics/index.html" target="_self">
+          Academics
+         </a>
+         <ul>
+          <li class="">
+           <a href="../../academics/curriculum/index.html" target="_self">
+            Curriculum
+           </a>
+           <ul>
+            <li>
+             <a href="../../academics/curriculum/46979-asset-management.html" target="_self">
+              Asset Management
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/communication-prep.html" target="_self">
+              Communication Prep
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46980-deutsche-bank-trading-competition.html" target="_self">
+              Deutsche Bank Trading Competition
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46901-financial-computing-i.html" target="_self">
+              Financial Computing I
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46902-financial-computing-ii.html" target="_self">
+              Financial Computing II
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46903-financial-computing-iii.html" target="_self">
+              Financial Computing III
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46904-financial-computing-iv.html" target="_self">
+              Financial Computing IV
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46921-financial-data-science-i.html" target="_self">
+              Financial Data Science I
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46923-financial-data-science-ii.html" target="_self">
+              Financial Data Science II
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46929-financial-time-series-analysis.html" target="_self">
+              Financial Time Series Analysis
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/financial-markets.html" target="_self">
+              Financial Markets
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46976-financial-optimization.html" target="_self">
+              Financial Optimization
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46956-fixed-income.html" target="_self">
+              Fixed Income
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/linear-algebra.html" target="_self">
+              Linear Algebra
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46975-macro-for-computational-finance.html" target="_self">
+              Macro For Computational Finance
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46982-market-microstructure-and-algorithmic-trading.html" target="_self">
+              Market Microstructure &amp; Algorithmic Trading
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46906-mscf-business-communication-i.html" target="_self">
+              MSCF Business Communication I
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46906-mscf-business-communication-ii.html" target="_self">
+              MSCF Business Communication II
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46972-mscf-finance.html" target="_self">
+              MSCF Finance
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/mscf-math-prep.html" target="_self">
+              MSCF Math Prep
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46973-mscf-options.html" target="_self">
+              MSCF Options
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/mscf-probability-prep.html" target="_self">
+              MSCF Probability Prep
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/mscf-programming-prep.html" target="_self">
+              MSCF Programming Prep
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46977-mscf-studies-in-financial-engineering.html" target="_self">
+              MSCF Studies in Financial Engineering
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46999-mscf-summer-internship.html" target="_self">
+              MSCF Summer Internship
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46941-multi-period-asset-pricing.html" target="_self">
+              Multi-Period Asset Pricing
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46950-numerical-methods.html" target="_self">
+              Numerical Methods
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46971-presentations-for-computational-finance.html" target="_self">
+              Presentations for Computational Finance
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46954-risk-management-i.html" target="_self">
+              Risk Management I
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46955-risk-management-ii.html" target="_self">
+              Risk Management II
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46932-simulation-methods-for-option-pricing.html" target="_self">
+              Simulation Methods for Option Pricing
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46926-statistical-machine-learning-i.html" target="_self">
+              Statistical Machine Learning I
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46927-statistical-machine-learning-ii.html" target="_self">
+              Statistical Machine Learning II
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46936-statistical-arbitrage.html" target="_self">
+              Statistical Arbitrage
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46944-stochastic-calculus-i.html" target="_self">
+              Stochastic Calculus I
+             </a>
+            </li>
+            <li>
+             <a href="../../academics/curriculum/46945-stochastic-calculus-ii.html" target="_self">
+              Stochastic Calculus II
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li>
+           <a href="../../academics/faculty.html" target="_self">
+            Faculty
+           </a>
+          </li>
+          <li>
+           <a href="../../academics/steering-committee.html" target="_self">
+            Steering Committee
+           </a>
+          </li>
+          <li>
+           <a href="../../academics/communication-development-program.html" target="_self">
+            Communication Development
+           </a>
+          </li>
+          <li>
+           <a href="../../academics/speaker-series.html" target="_self">
+            Speaker Series
+           </a>
+          </li>
+          <li>
+           <a href="../../academics/math-certificate.html" target="_self">
+            Math Certificate
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="">
+         <a href="../../careers/index.html" target="_self">
+          Careers
+         </a>
+         <ul>
+          <li class="">
+           <a href="../../careers/career-paths/index.html" target="_self">
+            Career Paths
+           </a>
+           <ul>
+            <li>
+             <a href="../../careers/career-paths/sales-trading.html" target="_self">
+              Sales &amp; Trading
+             </a>
+            </li>
+            <li>
+             <a href="../../careers/career-paths/financial-modeling.html" target="_self">
+              Financial Modeling
+             </a>
+            </li>
+            <li>
+             <a href="../../careers/career-paths/quantitative-portfolio-management.html" target="_self">
+              Quantitative Portfolio Management
+             </a>
+            </li>
+            <li>
+             <a href="../../careers/career-paths/risk-management.html" target="_self">
+              Risk Management
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li>
+           <a href="../../careers/career-office.html" target="_self">
+            Career Office
+           </a>
+          </li>
+          <li>
+           <a href="../../careers/employment-statistics.html" target="_self">
+            Employment Statistics
+           </a>
+          </li>
+          <li>
+           <a href="../../careers/internships.html" target="_self">
+            Internships
+           </a>
+          </li>
+          <li>
+           <a href="../../careers/faq.html" target="_self">
+            Careers FAQ
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="">
+         <a href="../index.html" target="_self">
+          Student Experience
+         </a>
+         <ul>
+          <li>
+           <a href="../pittsburgh-campus.html" target="_self">
+            Pittsburgh Campus
+           </a>
+          </li>
+          <li>
+           <a href="../ny-campus.html" target="_self">
+            New York Campus
+           </a>
+          </li>
+          <li class="active ">
+           <a href="index.html" target="_self">
+            Meet Our Current Students
+           </a>
+          </li>
+          <li class="">
+           <a href="../alumni-connections/index.html" target="_self">
+            Alumni Connections
+           </a>
+           <ul>
+            <li class="">
+             <a href="../alumni-connections/meet-our-alumni/index.html" target="_self">
+              Meet Our Alumni
+             </a>
+             <ul>
+              <li>
+               <a href="../alumni-connections/meet-our-alumni/akram-ayyash.html" target="_self">
+                Akram Ayyash
+               </a>
+              </li>
+              <li>
+               <a href="../alumni-connections/meet-our-alumni/michelle-chen.html" target="_self">
+                Michelle Chen
+               </a>
+              </li>
+              <li>
+               <a href="../alumni-connections/meet-our-alumni/josh-freeland.html" target="_self">
+                Josh Freeland
+               </a>
+              </li>
+              <li>
+               <a href="../alumni-connections/meet-our-alumni/daryl-hershberger.html" target="_self">
+                Daryl Hershberger
+               </a>
+              </li>
+              <li>
+               <a href="../alumni-connections/meet-our-alumni/olga-nekrasova.html" target="_self">
+                Olga Nekrasova
+               </a>
+              </li>
+              <li>
+               <a href="../alumni-connections/meet-our-alumni/michelle-ruvolo.html" target="_self">
+                Michelle Ruvolo
+               </a>
+              </li>
+              <li>
+               <a href="../alumni-connections/meet-our-alumni/devdeep-sarkar.html" target="_self">
+                Devdeep Sarkar
+               </a>
+              </li>
+              <li>
+               <a href="../alumni-connections/meet-our-alumni/antonios-tavlarakis.html" target="_self">
+                Antonios Tavlarakis
+               </a>
+              </li>
+             </ul>
+            </li>
+           </ul>
+          </li>
+         </ul>
+        </li>
+        <li class="">
+         <a href="../../admissions/index.html" target="_self">
+          Admissions
+         </a>
+         <ul>
+          <li>
+           <a href="../../admissions/request-information.html" target="_self">
+            Request Information
+           </a>
+          </li>
+          <li>
+           <a href="../../admissions/apply.html" target="_self">
+            Apply
+           </a>
+          </li>
+          <li>
+           <a href="../../admissions/class-profile.html" target="_self">
+            Class Profile
+           </a>
+          </li>
+          <li>
+           <a href="../../admissions/tuition-financial-aid.html" target="_self">
+            Tuition &amp; Financial Aid
+           </a>
+          </li>
+          <li>
+           <a href="../../admissions/faq.html" target="_self">
+            Admissions FAQ
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="">
+         <a href="../../visit-us/index.html" target="_self">
+          Visit Us
+         </a>
+        </li>
+        <li class="">
+         <a href="../../employers/index.html" target="_self">
+          For Employers
+         </a>
+         <ul>
+          <li>
+           <a href="../../employers/recruiter-guide.html" target="_self">
+            MSCF Recruiter Guide
+           </a>
+          </li>
+          <li>
+           <a href="../../employers/resume-books.html" target="_self">
+            Resume Books
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="">
+         <a href="../../alumni/index.html" target="_self">
+          For Alumni
+         </a>
+         <ul>
+          <li>
+           <a href="../../alumni/resources.html" target="_self">
+            Alumni Resources
+           </a>
+          </li>
+          <li>
+           <a href="../../alumni/network.html" target="_self">
+            Alumni Network
+           </a>
+          </li>
+          <li>
+           <a href="../../alumni/get-involved.html" target="_self">
+            Get Involved
+           </a>
+          </li>
+          <li>
+           <a href="../../alumni/gifts.html" target="_self">
+            Alumni Gifts
+           </a>
+          </li>
+         </ul>
+        </li>
+        <li class="secondary">
+         <a href="../../portal/index.html" target="_self">
+          Student &amp; Faculty Portal
+         </a>
+         <ul>
+          <li>
+           <a href="../../portal/mscf-resources.html" target="_self">
+            MSCF Resources
+           </a>
+          </li>
+          <li>
+           <a href="../../portal/academic-calendar.html" target="_self">
+            MSCF Academic Calendar
+           </a>
+          </li>
+          <li>
+           <a href="../../portal/curriculum-schedule.html" target="_self">
+            Faculty &amp; Course Schedule
+           </a>
+          </li>
+          <li>
+           <a href="../../portal/mscf-career-services.html" target="_self">
+            MSCF Career Services
+           </a>
+          </li>
+          <li>
+           <a href="../../portal/contacts.html" target="_self">
+            MSCF Faculty &amp; Staff Contacts
+           </a>
+          </li>
+          <li>
+           <a href="../../portal/anonymous-suggestion-box.html" target="_self">
+            Anonymous Suggestion Box
+           </a>
+          </li>
+         </ul>
+        </li>
+       </ul>
+      </nav>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script src="//www.cmu.edu/common/standard-v5.2/js/jquery-1.10.1.min.js" type="text/javascript">
+  </script>
+  <script src="//www.cmu.edu/common/standard-v5.2/js/main.min.js" type="text/javascript">
+  </script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+   <iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-5QFW6PR" style="display:none;visibility:hidden" width="0">
+   </iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <script async="async" src="https://apply.mscf.cmu.edu/ping" type="text/javascript">
+  </script>
+  <script src="//www.cmu.edu/__utm.js" type="text/javascript">
+  </script>
+ </body>
+</html>

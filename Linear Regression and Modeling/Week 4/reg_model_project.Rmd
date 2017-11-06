@@ -1,0 +1,192 @@
+---
+title: "Modeling and prediction for movies"
+output: 
+  html_document: 
+    fig_height: 4
+    highlight: pygments
+    theme: spacelab
+---
+
+## Setup
+
+### Load packages
+
+```{r load-packages, message = FALSE}
+library(ggplot2)
+library(dplyr)
+library(statsr)
+library(gridExtra)
+```
+
+### Load data
+```{r load-data}
+load("movies.Rdata")
+```
+
+* * *
+
+## Part 1: Data
+
+####Sample
+The sample data set is comprised of 651 randomly sampled movies produced and released before 2016. Some of the variables provide descriptive information that would not be use full in a data exploration or a linear regression analysis. For example:  Title of the movie, link to IMDB or link to rottentomatoes.
+
+####Methodology
+The data collection methodology is not explicitly stated, but it is evident that the data is purely observational. Random sampling was involved but random assignement of treatment was not done therefore we cannot make any causality study. Only generalization is allowed for the conclusion reached in this analysis.
+
+* * *
+
+## Part 2: Research question
+
+Let us first select the variables from the sample data given that will be of import to our discussion of a given movie's reception by audience.
+
+- imdb_rating: Rating on IMDB
+- critics_rating: Categorical variable for critics rating on Rotten Tomatoes (Certified Fresh, Fresh, Rotten)
+- critics_score: Critics score on Rotten Tomatoes
+- audience_rating: Categorical variable for audience rating on Rotten Tomatoes (Spilled, Upright)
+- audience_score: Audience score on Rotten Tomatoes
+- best_actor_win: Whether or not one of the main actors in the movie ever won an Oscar (no, yes)
+- best_actress_win: Whether or not one of the main actresses in the movie ever won an Oscar (no, yes)
+- best_dir_win: Whether or not the director of the movie ever won an Oscar (no, yes)
+
+I have discared variables like: title, genre, run time, time of release etc. because these do not intutively seem to be key ingredients of a movies success.
+
+The question that I will pose for this study is
+
+#####Is there a association between the rating of a movie with other film charateristics: actors, actress, directors who won an oscar and, critics and audience reception of the movie.
+
+One important thing to note here is that I have not yet selcted the exact response variable that I will use to quantify the rating. In the data Exploration, I will research further the 5 rating/scoring varibales, before settling on a final response variable.
+
+
+* * *
+
+## Part 3: Exploratory data analysis
+
+Let us begin by first constructing a subset from the original dataset by selecting the variables that we find interesting. Susequently we will remove the incomplete entries. Also, I will be constructing a new variable: oscar_win that will track weather actor, actress or director involved in the moview has had an oscar win.
+
+```{r dat-preprocessing}
+mv <- movies %>% select(imdb_rating, imdb_num_votes, critics_rating, critics_score, audience_score, audience_rating,  best_actor_win, best_actress_win, best_dir_win )
+mv <- na.exclude(mv)
+mv <- mutate(mv, oscar_win = ifelse(best_actor_win == "yes", "yes", ifelse(best_actress_win == "yes", "yes", ifelse(best_dir_win == "yes", "yes", "no"))))
+```
+
+Now let us focus our attention to the 5 variables that are used for scoring a movie:
+
+- imdb_rating
+- critics_rating
+- critics_score
+- audience_rating
+- audience_score
+
+Two of these variables: critics_rating and audience_rating are factor variables. These are too coarse as response variables therefore, I will be discarding them as vaiable choices. Focusing on the remaining variables:
+
+```{r scoring Analysis}
+pA <- ggplot(data = mv, aes(x = imdb_rating)) + geom_histogram(colour = "black", fill = "green", binwidth = .5)
+pB <- ggplot(data = mv, aes(x = critics_score)) + geom_histogram(colour = "black", fill = "cyan", binwidth = 5)
+pC <- ggplot(data = mv, aes(x = audience_score)) + geom_histogram(colour = "black", fill = "yellow", binwidth = 5)
+
+grid.arrange(pA, pB, pC, nrow = 1, ncol = 3)
+
+```
+
+
+imdb_rating seems to the variable that is closest to having a normal distribution, though left skewed, amongst the selected scoring schemes. Let us select imdb_rating as our response variable and proceed with observing what type of relationship it holds with the set of explanatory variables we wish to include in our study.
+
+- imdb_rating and critics_score facted by critics_rating
+- imdb_rating and critics_score facted by oscar win
+- imdb_rating and audience_score faceted by audience_rating
+- imdb_rating and audience_score faceted by oscar win.
+
+```{r}
+pA <- ggplot(data = mv, aes(y = imdb_rating, x = critics_score, colour = critics_rating)) + geom_point()
+pB <- ggplot(data = mv, aes(y = imdb_rating, x = critics_score, colour = oscar_win)) + geom_point()
+pC <- ggplot(data = mv, aes(y = imdb_rating, x = audience_score, colour = audience_rating)) + geom_point()
+pD <- ggplot(data = mv, aes(y = imdb_rating, x = audience_score, colour = oscar_win)) + geom_point()
+grid.arrange(pA, pB, pC, pD, nrow = 2, ncol = 2)
+```
+
+The graphs bring forward a few caveats:
+
+- The relationship imdb_rating has with audience_score and critics_score is fairly strong. 
+- Oscar win of  moview doesnt really hold much sway in terms of its scoring as oscar wins are randomly distributed across the scroring grids. It will be interesting to how adjusted R squared changes with oscar_win.
+
+* * *
+
+## Part 4: Modeling
+
+ - imdb_rating is choosen as a response variable as it behaves closest to a normally distributed variable
+ - critics_score is choosen as one of the explanatory variable as it clearly holds a string relationship with our response variable
+ - audience_score is choosen as a second explanatory variable as it is also having a strong relationship with our response variable
+ - oscarr_win will be added to our initial model to see how it impacts R squared and to check if it has a signifiant relationship with our response variable
+
+
+```{r success_formula}
+success_formula <- lm(imdb_rating ~ audience_score + critics_score, data = mv)
+summary(success_formula)
+```
+
+Now lets us introduce oscar_win and see how our model changes
+
+```{r sucess_formula_v2}
+success_formula <- lm(imdb_rating ~ audience_score + critics_score + oscar_win, data = mv)
+summary(success_formula)
+```
+
+We do see a improvement in our models adjusted R-squared, but the improvement is miniscule. This is to be expected as predicted by the graphical analysis in Data Exploratory section. Therefore we choose our Linear Regression equation as:
+
+#####imdb_rating = 3.3.618+0.0348audience_score+0.0116critics_score+0.13124oscar_winyes
+
+###Model Interpretation
+
+Intercept(3.61) : Predicted mean when all other variables take a value of zero. Like in most cases, the intercept in this case is not carrying much real world meaning, but is simply for a model fit
+
+Coefficient for audience_score(0.0348): With all other variables held constant, per unit increase in audience_score will improve the imdb_rating by 0.0348 
+
+Coefficient for critics_score(0.0116):With all other variables held constant, per unit increase in critics_score will improve the imdb_rating by 0.0348
+
+Coefficient for oscar(0.1312): With all other variables else held constant, imdb_rating for movies with at least one member of the cast (actor, actress, or director) with an Oscar award is 0.13 points higher than movies with cast that have no Oscar wins.
+
+###Conditions Check for Linear Regresion
+
+####linear relationships between (numerical) x and y 
+Check: Each (numerical) explanatory variable linearly related to the response variable. Check using residuals plots
+
+```{r Linear relationship check}
+t1 <-  ggplot(data = mv, aes(x = audience_score, y = resid(success_formula))) + geom_hline(yintercept = 0, size = 1)  + xlab("audience_score") + ylab("Residual") + geom_point()  
+t2 <-  ggplot(data = mv, aes(x = critics_score, y = resid(success_formula))) + geom_hline(yintercept = 0, size = 2)  + xlab("critics_score") + ylab("Residual") + geom_point()
+grid.arrange(t1, t2, nrow = 1, ncol = 2)
+```
+
+
+####Independent and nearly normal residuals with mean 0
+Check: Nearly normal distribution of residuals centered at 0. Check using histogram or normal probability plot
+
+```{r early normal residuals}
+par(mfrow = c(1,3))
+hist(success_formula$residuals)
+qqnorm(success_formula$residuals)
+qqline(success_formula$residuals)
+
+
+
+```
+The model clearly shows a heavy left left skew, as evident in the histogram. This observation is also supported by the quantiles plot
+
+* * *
+
+## Part 5: Prediction
+
+I will be using the 2016 movie Deadpool for testing our model.
+
+```{r prediction}
+newDf <- data.frame(audience_score = 90, critics_score = 84, oscar_win = "no")
+predict(success_formula, newDf, interval = "prediction", level = 0.95, se.fit = TRUE)
+
+```
+
+The predicted rating of the movie is 7.72, with 95% prediction interval of [6.76, 8.68]. The actual rting of the movie is 8.0 which is within our prediction interval 
+
+* * *
+
+## Part 6: Conclusion
+
+Our model with audience and critic rating scores as explanatory variables does a good job as a prediction model with the explanatory variable explaining aproximately 80% of the varaibility in the response variable.This being said, one should consider that there will be some amount of dependency between critic and audience score and these two will not be completly independent variables. Another important caveat that should be adhered is that the model is not good with low scores. This is evident from the quantile plots. Therefore the user should be carefull when using the model to predict imdb ratings using low audience and critics scores.

@@ -1,0 +1,365 @@
+<meta charset="utf-8"/>
+<co-content>
+ <p>
+  Congratulations on getting a job as a data scientist at Paramount Pictures! Please see the
+  <a href="https://www.coursera.org/learn/bayesian/peer/W6yxq/data-analysis-project">
+   Data Analysis Project
+  </a>
+  for your assignment. Below you will find the files that you will need.
+ </p>
+ <p>
+  Your boss has just acquired data about how much audiences and critics like movies as well as numerous other variables about the movies. This dataset is provided below, and it includes information from
+  <a href="http://www.rottentomatoes.com/">
+   Rotten Tomatoes
+  </a>
+  and
+  <a href="http://www.imdb.com/">
+   IMDB
+  </a>
+  for a random sample of movies.
+ </p>
+ <p>
+  Your boss is interested in learning what attributes make a movie popular. She is also interested in learning something new about movies. She wants your team to figure it all out.
+ </p>
+ <p>
+  As part of this project you will complete exploratory data analysis (EDA), modeling, and prediction.
+ </p>
+ <p>
+  The specific modeling task you need to complete is as follows: Develop a Bayesian regression model to predict audience_score from the following explanatory variables. Note that some of these variables are in the original dataset provided, and others are new variables you will need to construct in the data manipulation section using the mutate function in dplyr:
+ </p>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    feature_film:
+    <em>
+     "yes" if title_type is Feature Film, "no" otherwise
+    </em>
+   </p>
+  </li>
+  <li>
+   <p>
+    drama:
+    <em>
+     "yes" if genre is Drama, "no" otherwise
+    </em>
+   </p>
+  </li>
+  <li>
+   <p>
+    runtime
+   </p>
+  </li>
+  <li>
+   <p>
+    mpaa_rating_R:
+    <em>
+     "yes" if mpaa_rating is R, "no" otherwise
+    </em>
+   </p>
+  </li>
+  <li>
+   <p>
+    thtr_rel_year
+   </p>
+  </li>
+  <li>
+   <p>
+    oscar_season:
+    <em>
+     "yes" if movie is released in November, October, or December (based on thtr_rel_month), "no" otherwise
+    </em>
+   </p>
+  </li>
+  <li>
+   <p>
+    summer_season:
+    <em>
+     "yes" if movie is released in May, June, July, or August (based on thtr_rel_month), "no" otherwise
+    </em>
+   </p>
+  </li>
+  <li>
+   <p>
+    imdb_rating
+   </p>
+  </li>
+  <li>
+   <p>
+    imdb_num_votes
+   </p>
+  </li>
+  <li>
+   <p>
+    critics_score
+   </p>
+  </li>
+  <li>
+   <p>
+    best_pic_nom
+   </p>
+  </li>
+  <li>
+   <p>
+    best_pic_win
+   </p>
+  </li>
+  <li>
+   <p>
+    best_actor_win
+   </p>
+  </li>
+  <li>
+   <p>
+    best_actress_win
+   </p>
+  </li>
+  <li>
+   <p>
+    best_dir_win
+   </p>
+  </li>
+  <li>
+   <p>
+    top200_box
+   </p>
+  </li>
+ </ul>
+ <p>
+  All analysis must be completed using the R programming language via RStudio, and your write-up must be an R Markdown document. To help you get started we provide a template Rmd file below (see Rmd template in the Required files section below). Download this file, and fill in each section.
+ </p>
+ <p>
+  <strong>
+   NOTE:
+  </strong>
+  If you have previously completed Course 3 in the Statistics with R Specialization (Linear Regression and Modeling) you should be familiar with this dataset. While the dataset is the same, the tasks you are asked to carry out for this project are different.
+ </p>
+ <p>
+  <strong>
+   IMPORTANT:
+  </strong>
+  Analyses completed using software other than R, or not written up using R Markdown, will receive a 0 on the project regardless of their content.
+ </p>
+ <h2 level="2">
+  Required files
+ </h2>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Data - Save this file in the same directory as the Rmd template (provided below).
+   </p>
+  </li>
+ </ul>
+ <p>
+  <strong>
+   NOTE:
+  </strong>
+  If you are using Chrome as your browser you might need to change the .gz at the end of the extension to .Rdata in the file you downloaded.
+ </p>
+ <asset assettype="generic" extension="Rdata" id="FE6ABSQ-Eea3kgpbcREV_w" name="movies">
+ </asset>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Codebook - Review this file to find out what each column in the data represents.
+   </p>
+  </li>
+ </ul>
+ <asset assettype="generic" extension="html" id="RvkKwDEREeaCFgopl-HV3Q" name="movies_codebook">
+ </asset>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Rmd template - You must use this template to write up your project. Save the data and this file in the same directory.
+   </p>
+  </li>
+ </ul>
+ <asset assettype="generic" extension="Rmd" id="hGqDdkSuEeaCKhKaSMZqmQ" name="bayesian_project">
+ </asset>
+ <ul bullettype="bullets">
+  <li>
+   <p>
+    Assessment rubric - You might want to review the assessment rubric while working on your project so that you have some idea of how your peers will evaluate your work. Please review this carefully before starting your project and refer to it regularly as you are working on your project.
+   </p>
+  </li>
+ </ul>
+ <asset assettype="generic" extension="html" id="aDwEmESyEeaDxxKmNEQRrw" name="bayesian_project_rubric">
+ </asset>
+ <h2 level="2">
+  More information on the data
+ </h2>
+ <p>
+  The data set is comprised of 651 randomly sampled movies produced and released before 2016.
+ </p>
+ <p>
+  Some of these variables are only there for informational purposes and do not make any sense to include in a statistical analysis. It is up to you to decide which variables are meaningful and which should be omitted. For example information in the the `
+  <em>
+   actor1
+  </em>
+  ` through `
+  <em>
+   actor5
+  </em>
+  ` variables was used to determine whether the movie casts an actor or actress who won a best actor or actress Oscar.
+ </p>
+ <p>
+  You might also choose to omit certain observations or restructure some of the variables to make them suitable for answering your research questions.
+ </p>
+ <p>
+  When you are fitting a model you should also be careful about collinearity, as some of these variables may be dependent on each other.
+ </p>
+ <p>
+  Source:
+  <a href="http://www.rottentomatoes.com/">
+   Rotten Tomatoes
+  </a>
+  and
+  <a href="http://www.imdb.com/">
+   IMDB
+  </a>
+  APIs.
+ </p>
+ <h2 level="2">
+  More information on model selection
+ </h2>
+ <p>
+  You may choose to use any of the Bayesian model selection techniques presented in this course, however you should justify your choice. Note that there are many other model selection techniques that are beyond the scope of this course, and those should not be used in this project.
+ </p>
+ <p>
+  Note that you have a very specific task on hand: predict audience_score based on the explanatory variables listed above. Also note that you first need to create some of these explanatory variables based on existing variables in the dataset.
+ </p>
+ <h2 level="2">
+  Frequently Asked Questions
+ </h2>
+ <p>
+  <strong>
+   Do I have to use R for my project?
+  </strong>
+  Yes. While there are other statistical packages and/or programming languages that may be perfectly appropriate for your project, since one of the goals of this course is to learn R, all analysis
+  <strong>
+   must
+  </strong>
+  be completed in R and using the Rmd template provided above. Projects completed using other statistical packages and/or programming languages will receive a 0 on the project.
+ </p>
+ <p>
+  <strong>
+   Where can I find a list of R commands that might be useful for the project?
+  </strong>
+  Refer to the previous labs and see the
+  <a href="https://www.rstudio.com/resources/cheatsheets/">
+   RStudio cheatsheets
+  </a>
+  for dplyr, ggplot2, and RMarkdown.
+ </p>
+ <p>
+  <strong>
+   Who am I writing for?
+  </strong>
+  Write as if you are explaining your results to whomever would be interested in your research question, whether this is another scholar in your field or peers sharing your interest in the topic. This audience may not have taken a statistics course. You must be statistically accurate and use correct statistical terminology, but must also explain your conclusions in a way that anyone can understand.
+ </p>
+ <p>
+  <strong>
+   Does my project have to be written in English?
+  </strong>
+  Yes, your project must be written in English; this is the only way to ensure that the students who are assigned to review your project can understand it.
+ </p>
+ <p>
+  <strong>
+   What is a peer assessment?
+  </strong>
+  Peer Assessment is when students in a course evaluate a fellow student's work. First, each student submits an assignment. Then, the students who have submitted an assignment are given other students' assignments to evaluate, according to provided criteria. Finally, each student receives a grade that is based on the other students' evaluations.
+ </p>
+ <p>
+  <strong>
+   Can I use a paper I've worked on for another course or purpose?
+  </strong>
+  No. Please create a unique project for this course. Do not use your master's thesis, work you have published elsewhere or work you have submitted for another course. In the past, students who have submitted work they used elsewhere were reported as submitting plagiarized work.
+ </p>
+ <p>
+  <strong>
+   What if I think the project I am assessing has been plagiarized?
+  </strong>
+ </p>
+ <ol bullettype="numbers">
+  <li>
+   <p>
+    Assess the project according to the Evaluation/Feedback directions.
+   </p>
+  </li>
+  <li>
+   <p>
+    Report plagiarism to Coursera
+    <a href="https://learner.coursera.help/hc/en-us/articles/209818863-Coursera-Honor-Code">
+     https://learner.coursera.help/hc/en-us/articles/209818863-Coursera-Honor-Code
+    </a>
+   </p>
+  </li>
+ </ol>
+ <p>
+  <strong>
+   How do I avoid plagiarism?
+  </strong>
+ </p>
+ <p>
+  "In an instructional setting, plagiarism occurs when a writer deliberately uses someone else’s language, ideas, or other original (not common-knowledge) material without acknowledg­ing its source." - The
+  <a href="http://wpacouncil.org/positions/WPAplagiarism.pdf" title="Link: http://wpacouncil.org/positions/WPAplagiarism.pdf">
+   Council of Writing Program Administrators.
+  </a>
+ </p>
+ <p>
+  Therefore, please give credit for all of the sources you have used. Copying and pasting from a site without giving the source is plagiarism, and will be reported. For more information, see
+  <a href="https://plagiarism.duke.edu/def/" title="Link: https://plagiarism.duke.edu/def/">
+   this tutorial on avoiding plagiarism
+  </a>
+  . In your own project, give credit to all sources you used, even if you have paraphrased them or if they are your own work but published elsewhere.
+ </p>
+ <p>
+ </p>
+</co-content>
+<style>
+ body {
+    padding: 50px 85px 50px 85px;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px 20px;
+    text-align: left;
+}
+input {
+    margin: 10px;
+}
+}
+th {
+    font-weight: bold;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+img {
+    height: auto;
+    max-width: 100%;
+}
+pre {
+    display: block;
+    margin: 20px;
+    background: #424242;
+    color: #fff;
+    font-size: 13px;
+    white-space: pre-wrap;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    border: 1px solid #ccc;
+}
+</style>
+<script async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$$','$$'], ['$','$'] ],
+      displayMath: [ ["\\[","\\]"] ],
+      processEscapes: true
+    }
+  });
+</script>

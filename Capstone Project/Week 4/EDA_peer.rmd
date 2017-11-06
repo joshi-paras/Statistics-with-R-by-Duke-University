@@ -1,0 +1,180 @@
+---
+title: "Peer Assessment I"
+output:
+  html_document: 
+    pandoc_args: [
+      "--number-sections",
+    ]
+---
+
+
+First, let us load the data and necessary packages:
+
+```{r load, message = FALSE}
+load("ames_train.Rdata")
+library(MASS)
+library(BAS)
+library(dplyr)
+library(ggplot2)
+library(devtools)
+library(statsr)
+```
+
+#
+Make a labeled histogram (with 30 bins) of the ages of the houses in the data set, and describe the distribution.
+
+
+```{r Q1}
+
+ames_train <- ames_train %>% 
+        mutate(age = 2017 - Year.Built)
+ggplot(ames_train, aes(x=age), labs(title = "Distribution of House Age", y = "Number of Houses", x = "Age of the House in 2017")) + geom_histogram(bins=30, fill = 'Magenta')
+
+summary(ames_train$age)
+```
+
+
+- With the mean (44.8) larger than the median age of 42.0, a positively skewed (Right-skewed) distribution is seen for the age varaiable. This is also evident from the histogtam plot. 
+- As evident from the graph, a high number of houses were built in the last decade.
+- A second peak is observere near the age of 60 years of age.
+
+
+#
+The mantra in real estate is "Location, Location, Location!" Make a graphical display that relates a home price to its neighborhood in Ames, Iowa. Which summary statistics are most appropriate to use for determining the most expensive, least expensive, and most heterogeneous (having the most variation in housing price) neighborhoods? Report which neighborhoods these are based on the summary statistics of your choice. Report the value of your chosen summary statistics for these neighborhoods.
+
+
+```{r Q2}
+ames_train %>% 
+        select(price, Neighborhood) %>%
+        group_by(Neighborhood) %>%
+                summarise(median = median(price), max = max(price), min = min(price), sd = sd(price)) %>% arrange(desc(median))
+
+ggplot(ames_train, aes(y = price, x = reorder(Neighborhood, price, FUN = median), fill = Neighborhood), main = "Price among Neighborhoods", xlim= "Neighborhood", ylim="Price" )+geom_boxplot() + coord_flip()
+
+```
+
+The best way to graph the price distribution across neighbourhoods is to use box plots. Also, as we observed in Q1, the  housing prices are with positive skew, therefore and median prices are a better estimate than mean for making generalizations. We observe the below from our graphs:
+
+- The houses of NridgHt and StoneBr have the highest prices among others, as well as, widest price range
+- The least expensive neighborhoods are the MeadowV, BrDale and the Old Town, with  Old Town having the lowest price among others
+
+# 
+
+Which variable has the largest number of missing values? Explain why it makes sense that there are so many missing values for this variable.
+
+```{r Q3}
+apply(ames_train, 2, function(x) sum(is.na(x))) %>% sort %>% tail
+
+```
+
+This number is high because "NA" is coded as "No Pool" in the data and most homes do not have a pool.
+
+
+#
+
+We want to predict the natural log of the home prices. Candidate explanatory variables are lot size in square feet (Lot.Area), slope of property (Land.Slope), original construction date (Year.Built), remodel date (Year.Remod.Add), and the number of bedrooms above grade (Bedroom.AbvGr). Pick a model selection or model averaging method covered in the Specialization, and describe how this method works. Then, use this method to find the best multiple regression model for predicting the natural log of the home prices.
+
+
+```{r Q4}
+model_lm = lm(log(price)~Lot.Area+Land.Slope
+         +Year.Built+Year.Remod.Add
+        +Bedroom.AbvGr, data = ames_train)
+
+summary(model_lm)
+
+model_bic = bas.lm(log(price)~Lot.Area+Land.Slope
+         +Year.Built+Year.Remod.Add
+        +Bedroom.AbvGr, data = ames_train,
+        prior = "BIC",
+        modelprior = uniform(),
+        method = "MCMC" )
+summary(model_bic)
+```
+
+We choose the appropriate model to implement using Bayesian model averaging (BMA), in which multiple models are averaged to obtain posteriors of coefficients and predictions from ata. BIC is selected as a prior distribution because it provides highest Posterior Probabilities values among all others methods. Running BMA (BIC and MCMC), we can see that the model suggests to keep all variables as the best fitted predictors of the home price. If we had a look at the linear model and would chose to eliminate a few variables to reach the final model, we would not touch any of them, either.
+
+#
+
+Which home has the largest squared residual in the previous analysis (Question 4)? Looking at all the variables in the data set, can you explain why this home stands out from the rest (what factors contribute to the high squared residual and why are those factors relevant)?
+
+
+```{r Q5}
+plot(model_lm)
+outlierHouse <- ames_train[which(model_lm$residuals^2 == max((model_lm$residuals)^2)),]
+outlierHouse
+predictedPrice <- exp(model_lm$fitted.values[which(model_lm$residuals^2 == max((model_lm$residuals)^2))])
+predictedPrice
+
+```
+
+Running plot residuals vs fitted, we found that lot PID number 902207130 is the outlier with highest squared residual. This could be explained by the lowest price of the house, and the year when the house was build. It was sold for just over 12,000 USD in 1928. The predicted price is 103176.20 USD which makes it a significant outlier.
+
+#
+
+Use the same model selection method you chose in Question 4 to again find the best multiple regression model to predict the natural log of home prices, but this time **replacing Lot.Area with log(Lot.Area)**. Do you arrive at a model including the same set of predictors?
+
+
+```{r Q6}
+
+model_bic = bas.lm(log(price) ~ log(Lot.Area)+Land.Slope
+         +Year.Built+Year.Remod.Add
+        +Bedroom.AbvGr, data = ames_train,
+        prior = "BIC",
+        modelprior = uniform(),
+        method = "MCMC" )
+summary(model_bic)
+
+```
+
+Modifying the variable Lot.Area by natural log, we get slightly different model. The new model now suggest that we remove both the Land.Slope variables!!
+
+#
+
+Do you think it is better to log transform Lot.Area, in terms of assumptions for linear regression? Make graphs of the predicted values of log home price versus the true values of log home price for the regression models selected for Lot.Area and log(Lot.Area). Referencing these two plots, provide a written support that includes a quantitative justification for your answer in the first part of question 7.
+
+```{r Q7}
+model_lm_1 = lm(log(price)~Lot.Area+Land.Slope
+         +Year.Built+Year.Remod.Add
+        +Bedroom.AbvGr, data = ames_train)
+
+model_lm_2 = lm(log(price)~log(Lot.Area)+Land.Slope
+         +Year.Built+Year.Remod.Add
+        +Bedroom.AbvGr, data = ames_train)
+
+summary(model_lm_1)
+summary(model_lm_2)
+
+plot(model_lm_1)
+plot(model_lm_2)
+
+
+log_ActualPrice <- log(ames_train$price)
+predict_model_1 <- predict.lm(model_lm_1, ames_train)
+predict_model_2 <- predict.lm(model_lm_2, ames_train)
+
+plotDataFrame = data.frame(log_ActualPrice = log_ActualPrice, PredictedPrice = c(predict_model_1, predict_model_2), predictionType=c(rep(c("Lot.Area"),1000),rep(c("log(Lot.Area))"),1000)), difference = c((log_ActualPrice - predict_model_1), (log_ActualPrice - predict_model_2)))
+
+ggplot(data=plotDataFrame, aes(x = log_ActualPrice, y = PredictedPrice, color = predictionType)) +
+    geom_point(, alpha = 0.5) +
+    geom_abline(slope=1, intercept=0) + 
+    labs(title = "Predicted log(Price) vs Actual log(Price) for Both Models", y = "Predicted log(Price)", x = "Actual log(Price)")
+
+
+
+
+```
+
+- Both plots of the predicted prices versus actual prices for each model are included in the same plot. A y=x corresponding to perfect prediction for all values of price is also added to provide a refrence. The plot shows that the results from both models are quite similar.
+
+- The Adjusted R squared values however do show that log transformation does improvde modelling as the value of Rsquared increases from 0.56 tp .060.
+
+- However are the differences observed between the predicted and actual prices for the two models statistically different. Lets find out! To confirm what we observed in the graph a hypothesis test with the null hypothesis that both results are actually equivalent is conducted. 
+
+```{r}
+inference(y = difference, x = predictionType, data = plotDataFrame, statistic = "mean", type = "ht", null = 0, 
+          alternative = "twosided", conf_level = 0.95, method = "theoretical", order = c("log(Lot.Area)","Lot.Area"))
+```
+
+
+- As shown above the p-value for this test is one, i.e. there is not sufficient evidence to reject the null hypothesis and a statistically significant difference in results for both models is not present
+

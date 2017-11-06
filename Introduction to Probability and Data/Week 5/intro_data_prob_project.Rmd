@@ -1,0 +1,181 @@
+
+title: "Exploring the BRFSS data"
+output: 
+  html_document: 
+    fig_height: 4
+    highlight: pygments
+    theme: spacelab
+---
+## Setup
+
+### Load packages
+
+```{r load-packages, message = FALSE}
+options(warn=-1)
+library(ggplot2)
+library(dplyr)
+library(stringr)
+
+```
+
+### Load data
+
+```{r load-data}
+load("brfss2013.RData")
+```
+
+* * *
+
+# Part 1: Data
+
+## BRFSS Data
+The Behavioral Risk Factor Surveillance System (BRFSS) is a collaborative project between all of the states in the United States (US) and participating US territories and the Centers for Disease Control and Prevention (CDC). The BRFSS is administered and supported by CDC's Population Health Surveillance Branch, under the Division of Population Health at the National Center for Chronic Disease Prevention and Health Promotion. 
+
+The BRFSS objective is to collect uniform, state-specific data on preventive health practices and risk behaviors that are linked to chronic diseases, injuries, and preventable infectious diseases that affect the adult population. Factors assessed by the BRFSS in 2013 include tobacco use, HIV/AIDS knowledge and prevention, exercise, immunization, health status, healthy days - health-related quality of life, health care access, inadequate sleep, hypertension awareness, cholesterol awareness, chronic health conditions, alcohol consumption, fruits and vegetables consumption, arthritis burden, and seatbelt use. Since 2011, BRFSS conducts both landline telephone- and cellular telephone-based surveys. In conducting the BRFSS landline telephone survey, interviewers collect data from a randomly selected adult in a household. In conducting the cellular telephone version of the BRFSS questionnaire, interviewers collect data from an adult who participates by using a cellular telephone and resides in a private residence or college housing.
+
+Health characteristics estimated from the BRFSS pertain to the non-institutionalized adult population, aged 18 years or older, who reside in the US.
+
+## Generalizability and Causality
+
+####Generalizability
+Given the breadth of the data collected for the survey - across 50 states plus US territories, covering over 490 thousand individuals with fair distribution across gender, ethnicity, educational background, marital status etc. the data collectiion does seem to be a good representation of random sampling making the observations made on the date generalizable to the broad US population.
+
+####Causality
+BRFSS is an observational survey with no random assignments to any of the variables - all relationships indicated may indication correlation , but not causation.
+
+* * *
+
+## Part 2: Research questions
+
+**Research quesion 1:**
+The first question will explore the distribution of health status across the population for which the data was collected. Furher we will add health coverage as a variable to guage if it adds a dimension to health status reported by the population. The question tests if a individual reports having health coverage, will he/she report better health status and if there is a discernable relationship between having health covetage and health status of the population.
+
+Two variables will be used when analysing this question:
+
+- genhlth
+
+- hlthpln1
+
+**Research quesion 2:**
+
+The second question will try to further drill into status of the population and add income distribution as an additional variable to see if the observations can be better explained by income distribution of the population. The question tests the hypothesis that people with higher self reported income will also have reported better health status.
+
+Three variables will be used when analysing this question:
+
+- genhlth
+
+- hlthpln1
+
+- income2
+
+**Research quesion 3:**
+
+The third question will study relationship between two variables: hours of sleep and reported mental health status. To add a dimension for physical fitness, BMI will be used for classifying the population into seperate buckets. The question tries to evaluate how BMI( a proxy for physical health) adds further visibility to relationship between hours of sleep and mental health  
+
+Three variables will be used when analysing this question:
+
+- X_bmi5cat
+
+- genhlth
+
+- sleptim1
+
+* * *
+
+## Part 3: Exploratory data analysis
+
+```{r brfssDataSubset}
+df <- brfss2013 %>% 
+select(genhlth, hlthpln1, sleptim1, X_bmi5cat, X_incomg) %>% na.omit()
+```
+
+**Research quesion 1:**
+The distribution of the health status of the population covered in the BRFSS study is as studied below for an initail observaion. We will be using the variable **genhlth** for this.
+
+**Health Status**
+```{r status}
+totalObsCount <- nrow(df)
+prop.table(table(df$genhlth)*100)
+plot(df %>% group_by(genhlth) %>% summarise(count = n()))
+```
+
+The health status of majority of the population clearly seems to be between good - and very good. Now to break down the initail observation further, let us introduce a new variable **hlthpln1** to see how if having health coverage adds a further dimension to our observation.
+
+**Variables**
+**genhlth**
+**hlthpln1**
+
+```{r coverage-vs-status}
+prop.table(table(df$hlthpln1, df$genhlth),2)
+```
+The published table report the proportion of population  under each categoty. As evident in the published table, there is no clear  distinction observed between people who are coverd vs people who are not covered. This holds truue across all reported classes of health status. An easier representation of the same data is mentioned in the grapgh below
+
+```{r graph coverage-vs-status}
+ggplot(df) + aes(x=hlthpln1, fill=genhlth) + geom_bar(position = "fill") + 
+ xlab("Health Care Coverage") + ylab("Proportion") + scale_fill_discrete(name="Reported Health")
+
+```
+
+***Conclusion***
+
+Therefore serach for the answer to the first research question gave below two notesworthy points:
+1. The majority of the population reported health status of good or better.
+
+2. Health Coverage does  not seem to have any hand in the self reported health status of the individual for majority of the population. This is evident from the proportional distribution of the reported  health status for covered individuals vs not covered individuals.
+
+
+**Research quesion 2:**
+
+We will now study the relation ship between income distribution and reported health status. For this pupose we will add the variable **income2**
+
+**Variables:**
+**genhlth**
+**hlthpln1**
+**income2**
+
+Let us first have a look at the income distribution of the entire population. 
+
+
+```{r incomeDisribution}
+df %>% group_by(X_incomg) %>% summarise(percent = n()/totalObsCount*100)
+ggplot(df, aes(x=X_incomg)) + geom_bar(color = "red", fill = "orange") + ggtitle('Income Distribution') + xlab('Income') + coord_flip()
+```
+
+Now let us include this additional information in the health status distribution to test the hypothesis that higher self reported income will coincide with better self reported health status
+
+```{r income-status}
+df <- mutate(df, X_incomg_wrap = str_wrap(X_incomg, width = 14))
+ggplot(df) + aes(x=hlthpln1, fill=genhlth) + geom_bar(position = "fill") + facet_grid(.~X_incomg_wrap) + xlab("Health Care Coverage") + ylab("Proportion") + scale_fill_discrete(name="Reported Health")
+
+```
+
+***Conclusion***
+
+This distribution does indeed show that reported income has a positive relationship with reported health status. Higherer the reported income higher is the proportion of Excellent and Very good health status and similarly the proportion population that reported health status as poor or fair decreased with increase in income level.
+
+**Research quesion 3:**
+
+In this topic we will try to relate hours slept with reported health status. Also we will include BMI Categories as a bucketing variable so that level of physical fitness does not dilute the results we are tryiing to arrive at.
+
+***Variables:***
+***X_bmi5cat***
+***genhlth***
+***sleptim1***
+
+```{r}
+ggplot(data = df , aes(x = genhlth, y = sleptim1)) +  geom_violin() + xlab("Obese - Health Status") + ylab ("Hours of sleep") + scale_y_continuous(limits = c(4, 11), breaks = c(4:11)) +  coord_flip() + facet_grid(.~X_bmi5cat)
+
+```
+
+***Conclusion***
+1. For population that reported Excellent health we see that the highest density was observed for the Hours of sleep between 6 - 8 hours. This observation ties up well with our expectation that 7 hours of sleep is considered good for maintaining health status.
+
+2. For population that reported poor health we see that the hours of sleep had a faltter distribution with good proportion of people ranging outside the normal sleep hours of 6-8.
+
+3. For each of the BMI categories except "Normal Weight" we see that the sleep hours are falling outside the normal range of 6- 8 hours of sleep for a larger prportion of the population. This does indeed tie up with our expectation that sleeping hours are impacted by too low or too hight BMI's.
+
+4. For underweight people the sleep hours are outside of the normal range for Good and Very Good health categories also. This does not follow our expectation and to some extent cast doubt the veracity of the reported data.
+
+
+
+###END###

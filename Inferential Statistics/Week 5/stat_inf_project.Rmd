@@ -1,0 +1,159 @@
+---
+title: "Statistical inference with the GSS data"
+output: 
+  html_document: 
+    fig_height: 4
+    highlight: pygments
+    theme: spacelab
+---
+
+## Setup
+
+### Load packages
+
+```{r load-packages, message = FALSE}
+library(ggplot2)
+library(dplyr)
+library(statsr)
+```
+
+### Load data
+
+Make sure your data and R Markdown files are in the same directory. When loaded
+your data file will be called `gss`. Delete this note when before you submit 
+your work. 
+
+```{r load-data}
+load("gss.Rdata")
+
+dfDegree <- gss %>% select(year, degree)
+dfJobSat <- gss %>% select(year, satjob)
+dfDegNjob <- gss %>% select(year, degree, satjob)
+```
+
+* * *
+
+## Part 1: Data
+
+####Sample
+The General Social Survey (GSS) is a sociological survey used to collect information and keep a historical record of the concerns, experiences, attitudes, and practices of residents of the United States.
+
+GSS questions cover a diverse range of issues including national spending priorities, marijuana use, crime and punishment, race relations, quality of life, confidence in institutions, and sexual behavior.
+
+The dataset used for this project is an extract of the General Social Survey (GSS) Cumulative File 1972-2012. It consists of 57061 observations with 114 variables. Each variable corresponds to a specific question asked to the respondent.
+
+####Methodology
+The GSS survey is conducted face-to-face with an in-person interview by NORC at the University of Chicago. The target population is adults (18+) living in households in the United States. Respondents are random sampled from a mix of urban, suburban, and rural geographic areas. Participation in the study is strictly voluntary.
+
+####Scope of Analysis:
+We can only make correlational study, conclusions, or association based inference. We cannot make causality study because random sampling was involved but random assignement of treatment was not done.
+
+
+## Part 2: Research question
+
+####Is there a relationship between respondents's self reported Educational qualification and thier self reported Job Satisfaction.
+
+The question is of interest to me because the relationship studied is the cornerstone for promotion of Institutionalized education in our society. While I understand that job satisfaction captures only a small part of an individual's biography, it would nonetheless be interesting to study its relationship with educational qualification.The question is of interest to me because it captures very well the societal 
+
+Before we proceed however, I would like to address a bias that I exepect to be present in the data.
+The variables: Respondent's educational qualification and Respondent's job satisfaction should have some reporting bias. This I believe to be true because of how we change our behavior based on how we feel people perceive us. As both variables tied to perception of ones self image, the reported values should have some inflation.
+
+
+## Part 3: Exploratory data analysis
+
+Let us begin by making a brief study of t he Job Satisfacton(satjob) trend for each category of Academic Qualification(degree) Trend over time. This would reveal presence or absence of any macro factors that can create an observable trend in both educational qualification and job satisfaction.
+
+#### Educational Qualification(degree) trend
+```{r degreeStudy}
+
+dfDegFreq <- as.data.frame(prop.table(table(dfDegree), 1))
+ggplot() + geom_bar(aes(y = Freq, x = year, fill = degree), data = dfDegFreq,
+                    stat="identity") + coord_flip() +
+    labs(x ="Year", y = "Relative Frequency" , fill = "Highest Degree")
+
+```
+
+There is a clear trend of increase of Education Qualification of the population as a whole. The number of people with less than highschool education has gradually dropped, with an increate in people persuing first degree and higher education. This does show that since 1970s the overall educational qualification of the population as a whole as increased.
+
+
+####Job Satisfaction(satjob) trend
+
+```{r JobSatisfaction}
+dfJobSatFreq <- as.data.frame(prop.table(table(dfJobSat), 1))
+satColor <- c("Very Satisfied" = "#99FF00", "Mod. Satisfied" = "#CCFF33", "A Little Dissat" = "#FFFF00", "Very Dissatisfied" = "#CC9900")
+ggplot() + geom_bar(aes(y = Freq, x = year, fill = satjob), data = dfJobSatFreq,
+                    stat="identity") + coord_flip() + scale_fill_manual(values = satColor) +
+    labs(x ="Year", y = "Relative Frequency" , fill = "Job Satisfaction")
+```
+
+There does not seem to be any observable trend in Job Satisfaction of the population from 1970s to early 2010s. However, it is obvious that majority of the population has been atleat Moderatly Satisfied throughout the time perios under analysis.
+
+####Educational Qualification N Job Satisfaction
+
+It would be certainly interesting to study if a trend becomes observable if we we bucket the entire sample based on thier educational qualification and then study the Job satisfation across time. Let us plot a standard heat map and observe the results. Before we proceed howeverm we will have to assign a numeric value to each Satisfaction Level. Choosing a linear scale for the factors a new variable, satisfaction index will be added with Very Satisfied at 4.0 and Very Dissatisfied at 1
+
+```{r JobSatNdegree}
+
+dfDegNjob <- dfDegNjob %>% filter(!is.na(degree), !is.na(satjob))
+dfDegNjob$year <- as.character(dfDegNjob$year)
+dfDegNjob$satIndex <- as.numeric(factor(dfDegNjob$satjob, levels = c("Very Dissatisfied", "A Little Dissat", "Mod. Satisfied", "Very Satisfied")))
+dfDegNjob <- dfDegNjob %>% group_by(year, degree) %>% summarise(satIndexMean = mean(satIndex))
+ggplot(dfDegNjob, aes(x = degree, y = year, fill = satIndexMean)) +
+    geom_tile() +
+    scale_fill_gradient(low = "red", high = "green", guide = guide_legend("Satisfaction Level"))
+
+```
+
+One clear distinction is that high educataional qualification population reported in general higher  jobsatisfication. This does seem to be in line with our intuition that a good education will lead to a job with higher job satisfaction.
+
+
+* * *
+
+## Part 4: Inference
+ Part 4: Inference
+
+In this section, we perform statistical inference on the results. Te process is outlined in the steps below:
+
+<li> Define hypothesis</li>
+<li>Choose statistical method</li>
+<li>Check for conditions</li>
+<li>Perform the inference tests</li>
+<li>Interpret the results</li>
+
+####Hypothesis
+The null hypothesis (H0H0) is that the respondent's highest degree obtained and thier job satisfaction level are independent
+The alternative hypothesis (HAHA) is that the respondent's highest degree obtained and thier job satisfaction level are not independent.
+
+The defined hypothesis is as per our requirement to study if educational qualification and a persons job satisfaction are related to each other.
+
+####Methods
+Since the dataset consists of two categorical variables, degree and satjob, with each variable having multiple categorical values, the adequate test to be used is the chi-square test of independence. This test is to be used when comparing 2 categorical variables where one of the variables has more than 2 levels. This is the case here, as can be seen below:
+```{r variables}
+dfDegNjob <- gss %>% select(year, degree, satjob)
+str(dfDegNjob)
+```
+
+####Conditions
+
+The key conditions for the chi square test of independence are:
+
+<li>Independence between observations. This is assumed to be true based on the sampling methodology used in the GSS, as it uses random sampling. Furthermore, the size of the sample is less than 10% of the population, and each result is only counted in one cell.</li>
+
+<li>Sample size. As can be seen below, there are at least 5 counts for each cell.</li>
+
+```{r sampleSize}
+table(dfDegNjob$degree,dfDegNjob$satjob)
+```
+
+####Inference
+With all the conditions met, we will now work on the inference calculation using the chi-square test.
+
+```{r}
+chisq.test(dfDegNjob$degree,dfDegNjob$satjob)
+```
+
+###Interpretation
+
+The high X-squared statistic with 12 degrees of freedom leads to very low p-values. Since the p-values are below alpha (0.05), we can conclude that there is sufficient evidence to reject H0H0 (null hypothesis) and accept the alternative hypothesis(HAHA)
+
+In the context of the research question, it mean that there is evidence that the educational qualification and job satisfaction are related. However, this result cannot be used to determine causality. This occurs because the GSS is an observational study, and not an experiment with randomized assignment to treatment.

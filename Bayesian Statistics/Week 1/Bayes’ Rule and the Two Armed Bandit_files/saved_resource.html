@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://127.0.0.1:7662/app391674b08bc7c09d3826c38bd466bca1/?w=&__subapp__=1 -->
+<html class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  <script type="application/shiny-singletons"></script>
+  <script type="application/html-dependencies">json2[2014.02.04];jquery[1.12.4];shiny[1.0.5];font-awesome[4.7.0];bootstrap[3.3.7]</script>
+<script src="./json2-min.js(1).download"></script>
+<script src="./jquery.min.js(1).download"></script>
+<link href="./shiny(1).css" rel="stylesheet">
+<script src="./shiny.min.js(1).download"></script>
+<link href="./font-awesome.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./bootstrap.min.css" rel="stylesheet">
+<script src="./bootstrap.min.js(1).download"></script>
+<script src="./html5shiv.min.js(1).download"></script>
+<script src="./respond.min.js(1).download"></script>  <style type="text/css">.fa-slot-machine:before {content: "\1f3b0"}</style>
+
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-5">
+          <h4>Machine 1:</h4>
+          <button class="btn btn-default action-button btn btn-primary shiny-bound-input" id="m1_play" style="width: 100px; white-space: normal;" type="button">
+            <i class="fa fa-slot-machine fa-3x"></i>
+            Play!
+          </button>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+          <h4>Machine 2:</h4>
+          <button class="btn btn-default action-button btn btn-success shiny-bound-input" id="m2_play" style="width: 100px; white-space: normal;" type="button">
+            <i class="fa fa-slot-machine fa-3x"></i>
+            Play!
+          </button>
+        </div>
+      </div>
+      <br>
+      <h4>Results:</h4>
+      <div id="tab" class="shiny-html-output shiny-bound-output"><table class="table shiny-table table- spacing-s" style="width:auto;">
+<thead> <tr> <th style="text-align: center;"> Wins </th> <th style="text-align: center;"> Loses </th> <th style="text-align: center;"> Plays </th>  </tr> </thead> <tbody>
+  <tr> <td align="center">   0 </td> <td align="center">   0 </td> <td align="center">   0 </td> </tr>
+  <tr> <td align="center">   0 </td> <td align="center">   0 </td> <td align="center">   0 </td> </tr>
+   </tbody> </table></div>
+    </div>
+    <div class="col-sm-4">
+      <h4>Events:</h4>
+      <div class="tabbable">
+        <ul class="nav nav-tabs" data-tabsetid="9855">
+          <li class="active">
+            <a href="http://127.0.0.1:7662/app391674b08bc7c09d3826c38bd466bca1/?w=&amp;__subapp__=1#tab-9855-1" data-toggle="tab" data-value="Log">Log</a>
+          </li>
+          <li>
+            <a href="http://127.0.0.1:7662/app391674b08bc7c09d3826c38bd466bca1/?w=&amp;__subapp__=1#tab-9855-2" data-toggle="tab" data-value="Data">Data</a>
+          </li>
+        </ul>
+        <div class="tab-content" data-tabsetid="9855">
+          <div class="tab-pane active" data-value="Log" id="tab-9855-1">
+            <div class="well" id="tPanel" style="overflow-y:scroll; max-height: 220px">
+              <div id="res" class="shiny-html-output shiny-bound-output"><table class="table shiny-table table- spacing-s" style="width:auto;">
+<thead> <tr> <th style="text-align: center;"> play </th> <th style="text-align: center;"> machine </th> <th style="text-align: center;"> outcome </th>  </tr> </thead> <tbody>
+  </tbody> </table></div>
+            </div>
+          </div>
+          <div class="tab-pane" data-value="Data" id="tab-9855-2">
+            <div class="well" id="tPanel" style="overflow-y:scroll; max-height: 220px">
+              <pre id="data" class="shiny-text-output noplaceholder shiny-bound-output"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <h4>Decision:</h4>
+      <button class="btn btn-default action-button btn btn-primary shiny-bound-input" id="m1_guess" type="button">Machine 1 is good</button>
+      <br>
+      <br>
+      <button class="btn btn-default action-button btn btn-success shiny-bound-input" id="m2_guess" type="button">Machine 2 is good</button>
+      <br>
+      <br>
+      <h4>
+        <div id="guess" class="shiny-text-output shiny-bound-output"></div>
+      </h4>
+      <br>
+      <br>
+      <button class="btn btn-default action-button btn btn-danger shiny-bound-input" id="reset" type="button">Reset</button>
+    </div>
+  </div>
+
+
+
+</body></html>

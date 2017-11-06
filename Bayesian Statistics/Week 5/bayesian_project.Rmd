@@ -1,0 +1,467 @@
+<<<<<<< HEAD
+---
+title: "Bayesian modeling and prediction for movies"
+output: 
+  html_document: 
+    fig_height: 4
+    highlight: pygments
+    theme: spacelab
+---
+
+## Setup
+
+### Load packages
+
+```{r load-packages, message = FALSE}
+library(ggplot2)
+library(dplyr)
+library(statsr)
+library(BAS)
+library(gridExtra)
+library(tidyr)
+```
+
+### Load data
+```{r load-data}
+load("movies.Rdata")
+```
+
+
+
+* * *
+
+## Part 1: Data
+
+####Sample
+The sample data set is comprised of 651 randomly sampled movies produced and released before 2016. Some of the variables provide descriptive information that would not be use full in a data exploration or a linear regression analysis. For example:  Title of the movie, link to IMDB or link to rottentomatoes.
+
+####Methodology
+The data collection methodology is not explicitly stated, but it is evident that the data is purely observational. Random sampling was involved but random assignement of treatment was not done therefore we cannot make any causality study. Only generalization is allowed for the conclusion reached in this analysis.
+
+
+* * *
+
+## Part 2: Data manipulation
+
+In addition to the existing variables in the dataset, we will now be adding the below set of variables to be used in modelling.
+
+- feature_film: "yes" if title_type is "Feature Film", "no" otherwise
+- drama: "yes" if genre is "Drama", "no" otherwise
+- mpaa_rating_R: "yes" if mpaa_rating is "R", "no" otherwise
+- oscar_season: "yes" if movie is released in November, October, or December (based on thtr_rel_month), "no" otherwise
+- summer_season: "yes" if movie is released in May, June, July, or August (based on thtr_rel_month), "no" otherwise
+* * *
+
+```{r mutateData}
+
+movies <- movies %>% 
+          mutate(feature_film=as.factor(ifelse(title_type == 'Feature Film', 'yes', 'no'))) %>%
+          mutate(drama=as.factor(ifelse(genre == 'Drama', 'yes', 'no'))) %>%
+          mutate(mpaa_rating_R=as.factor(ifelse(mpaa_rating == 'R', 'yes', 'no'))) %>%
+          mutate(oscar_season=as.factor(ifelse(thtr_rel_month %in% c(10:12), 'yes', 'no'))) %>%
+          mutate(summer_season=as.factor(ifelse(thtr_rel_month %in% c(5:8), 'yes', 'no')))
+```
+
+
+## Part 3: Exploratory data analysis
+
+Let us begin by first constructing a subset from the original dataset by selecting the variables that will be used in modelling. Susequently we will remove the incomplete entries. Also, I will be constructing a new variable: oscar_win that will track weather actor, actress or director involved in the moview has had an oscar win.
+
+feature_film
+drama
+runtime
+mpaa_rating_R
+thtr_rel_year
+oscar_season
+summer_season
+imdb_rating
+imdb_num_votes
+critics_score
+best_pic_nom
+best_pic_win
+best_actor_win
+best_actress_win
+best_dir_win
+top200_box
+
+
+```{r dat-preprocessing}
+mv <- movies %>% select(audience_score, feature_film, drama, runtime, mpaa_rating_R, thtr_rel_year, oscar_season, summer_season, imdb_rating, imdb_num_votes, critics_score, best_pic_nom, best_pic_win, best_actor_win, best_actress_win, best_dir_win, top200_box)
+
+mv <- na.exclude(mv)
+
+mv <- mutate(mv, oscar = ifelse(best_pic_nom == "yes", "yes", ifelse(best_pic_win == "yes", "yes",  ifelse(best_actor_win == "yes", "yes", ifelse(best_actress_win == "yes", "yes", ifelse(best_dir_win == "yes", "yes", "no"))))))
+```
+
+Focusing our attention to the variables that we wish to explore further, we observe that there are two types of variables:
+
+- Categorical variables with two factors: feature_film, drama, mpaa_rating_R, oscar_season, summer_season, oscar, and top200_box. Note that I am now having just one variable oscar instead of 5 variabled. This done because in the privious analysis of the dataset in the 'Linear Regression Module' we proved that using a proxy variable is a better approach.
+
+- Continuous variables: runtime, imdb_rating, imdb_num_votes, and critics_score.
+
+Now let us briefly explore theser variables
+
+####Categorical Variables exploration
+
+```{r}
+mv_cat <- mv %>% gather('attribute','Yes_or_No', c(feature_film, drama, mpaa_rating_R, oscar_season, summer_season, oscar, top200_box))
+ggplot(data=mv_cat,aes(x=attribute, y= audience_score,fill=Yes_or_No))+geom_boxplot() + coord_flip()
+```
+
+The above plot shows that feature_film variable and top200_box are the two categorical variables that seem to have a discernable relationship with the audience_score
+
+####Continuous Variables exploration
+
+```{r Cont Analysis}
+pA <- ggplot(data = mv, aes(x = runtime)) + geom_histogram(colour = "black", fill = "green", binwidth = .5)
+pB <- ggplot(data = mv, aes(x = imdb_rating)) + geom_histogram(colour = "black", fill = "cyan", binwidth = .2)
+pC <- ggplot(data = mv, aes(x = imdb_num_votes)) + geom_histogram(colour = "black", fill = "yellow", binwidth = 2000)
+pD <- ggplot(data = mv, aes(x = critics_score)) + geom_histogram(colour = "black", fill = "orange", binwidth = 2)
+pE <- ggplot(data = mv, aes(x = audience_score)) + geom_histogram(colour = "black", fill = "magenta", binwidth = 2)
+
+
+grid.arrange(pA, pB, pC, pD, pE, nrow = 2, ncol = 3)
+```
+
+#####The plots above show that our explanatory variable audience_score is skewed to the right.
+
+####Relationship Exploration: audience_score and the new variables
+
+```{r}
+BI_1 <- bayes_inference(y = audience_score, x = feature_film, data = mv, statistic = "mean", type = "ht", null = 0, alternative = "twosided")
+BI_2 <- bayes_inference(y = audience_score, x = drama, data = mv, statistic = "mean", type = "ht", null = 0, alternative = "twosided")
+BI_3 <- bayes_inference(y = audience_score, x = mpaa_rating_R, data = mv, statistic = "mean", type = "ht", null = 0, alternative = "twosided")
+BI_4 <- bayes_inference(y = audience_score, x = oscar_season, data = mv, statistic = "mean", type = "ht", null = 0, alternative = "twosided")
+
+```
+
+Faeture Film: Bayes factor of H2 against H1 also shows a strong evedience that feature film is significant in affecting final scores
+Drama: The bayesian factor is 22.6, showing a positive evidence of H2 against H1. It means drama genre definitely influences the final score
+R Rating: The bayesian factor is 24, showing a positive evidence of H1 against H2. It means that R rating cannot affect the final score.
+Oscar Season: The bayesian factor is 13.4 with positive evidence of H1 against H2. The Oscar seasons cannot affect the final rating.
+
+* * *
+## Part 4: Modeling
+
+We begin modelling exercise by selecting a full model, i.e, choose all avaliable variables to model the audience_score. Subsequently we remove variables from the model, one at a time, until BIC can not be lowered. 
+This approach taakes as input: a full model, and a penalty parameter k. We find the best model according to BIC i.e. k=log(n).
+
+
+```{r}
+library(MASS)
+lm1 <- lm(audience_score ~ . - audience_score, data = mv)
+score_step <- stepAIC(lm1, trace = FALSE)
+score_step$anova
+```
+
+The results above show that the final model is significantly different from the full model that we started with. Another interesting thing to note here is that the of the new features only mpaa_rating_R variable is left. And this is indeed in line with what we observed during exploratory analysis.
+
+####BMA
+
+With several models, each being quite plausible, choosing only one ignores the inherent uncertainty involved in choosing the variables to include in the model. To adress this we implement Bayesian model averaging (BMA). Multiple models are averaged to obtain posteriors of coefficients and predictions from new data.
+
+```{r}
+bma1 <- bas.lm(audience_score ~ . - audience_score, data = mv,
+                   prior = "BIC", 
+                   modelprior = uniform())
+bma1
+summary(bma1)
+image(bma1,rotate=FALSE)
+```
+
+The most likely model, which has posterior probability of 0.269, includes only an intercept. While a posterior probability of 0.269 sounds small, it is much larger than the uniform prior probability assigned to it, since there are 2^17. possible models. By looking at the image, we can see that the most probable model is the one with only intercept.
+
+###Model DIagnostics
+
+```{r}
+par(mfrow=c(2,2))
+plot(bma1, which=c(1, 2), ask=FALSE)
+plot(bma1, which=4, ask=FALSE, cex.lab=0.5)
+```
+
+
+* * *
+
+## Part 5: Prediction
+
+The predictive capability of bayesian model averaging was tested using data for a movie that was not included in the analysis data set. The movie chosen was Deadpool which was released early in 2016.  The information for this movie was obtained from the IMDb and Rotten Tomatoes web sites in order to be consistent with the analysis data 
+
+```{r}
+Deadpool <- data.frame(runtime=108,
+                         thtr_rel_year=2016,
+                         imdb_rating=8.1,
+                         imdb_num_votes=500049,
+                         critics_score=84,
+                         audience_score=0,
+                         best_pic_nom=factor("no", levels=c("no", "yes")),
+                         best_pic_win=factor("no", levels=c("no", "yes")),
+                         best_actor_win=factor("no", levels=c("no", "yes")),
+                         best_actress_win=factor("no", levels=c("no", "yes")),
+                         best_dir_win=factor("no", levels=c("no", "yes")),
+                         top200_box=factor("no", levels=c("no", "yes")),
+                         feature_film=factor("yes", levels=c("no", "yes")),
+                         drama=factor("no", levels=c("no", "yes")),
+                         mpaa_rating_R=factor("yes", levels=c("no", "yes")),
+                         oscar_season=factor("no", levels=c("no", "yes")),
+                         summer_season=factor("no", levels=c("no", "yes")),
+                         oscar = factor("no", levels=c("no", "yes")))
+
+BMA_DP <- predict(bma1, newdata=Deadpool, estimator="BMA", se.fit=TRUE)
+
+# Calculate 95% margin of error for the prediction interval.
+BMA_DP_pred <- qt(0.95, df=BMA_DP$se.bma.pred[1]) *
+                     mean(BMA_DP$se.bma.pred)
+
+# Show prediction results.
+df <- data.frame(t="Deadpool",
+                 p=sprintf("%2.1f", BMA_DP$Ybma),
+                 i=sprintf("%2.1f - %2.1f", BMA_DP$Ybma - BMA_DP_pred,
+                           BMA_DP$Ybma + BMA_DP_pred),
+                 r=84)
+colnames(df) <- c("Movie Title", "Predicted Rating", "95% Prediction Interval", 
+                  "Actual Rating")
+print(df)
+
+
+```
+
+The true audience score for the movie is 84. The model prediction is 88 with a 95% prediction interval of 69.8 to 106.4 
+
+## Part 6: Conclusion
+The relationship between audience score and the varaibles in movies dataset was analysed in project. An Exploratory Data Analysis was performed for the five derived variables. A Bayesian Information criterion backwards elimination produced a model that was scrutinized using Bayesian Posterior Probabilities. The model was used to predict score of a recent Movie and the results were positive with the predicted score close to the actual score, and the actual scoore within the 95% connfidence interval
+
+
+=======
+---
+title: "Bayesian modeling and prediction for movies"
+output: 
+  html_document: 
+    fig_height: 4
+    highlight: pygments
+    theme: spacelab
+---
+
+## Setup
+
+### Load packages
+
+```{r load-packages, message = FALSE}
+library(ggplot2)
+library(dplyr)
+library(statsr)
+library(BAS)
+library(gridExtra)
+library(tidyr)
+```
+
+### Load data
+```{r load-data}
+load("movies.Rdata")
+```
+
+
+
+* * *
+
+## Part 1: Data
+
+####Sample
+The sample data set is comprised of 651 randomly sampled movies produced and released before 2016. Some of the variables provide descriptive information that would not be use full in a data exploration or a linear regression analysis. For example:  Title of the movie, link to IMDB or link to rottentomatoes.
+
+####Methodology
+The data collection methodology is not explicitly stated, but it is evident that the data is purely observational. Random sampling was involved but random assignement of treatment was not done therefore we cannot make any causality study. Only generalization is allowed for the conclusion reached in this analysis.
+
+
+* * *
+
+## Part 2: Data manipulation
+
+In addition to the existing variables in the dataset, we will now be adding the below set of variables to be used in modelling.
+
+- feature_film: "yes" if title_type is "Feature Film", "no" otherwise
+- drama: "yes" if genre is "Drama", "no" otherwise
+- mpaa_rating_R: "yes" if mpaa_rating is "R", "no" otherwise
+- oscar_season: "yes" if movie is released in November, October, or December (based on thtr_rel_month), "no" otherwise
+- summer_season: "yes" if movie is released in May, June, July, or August (based on thtr_rel_month), "no" otherwise
+* * *
+
+```{r mutateData}
+
+movies <- movies %>% 
+          mutate(feature_film=as.factor(ifelse(title_type == 'Feature Film', 'yes', 'no'))) %>%
+          mutate(drama=as.factor(ifelse(genre == 'Drama', 'yes', 'no'))) %>%
+          mutate(mpaa_rating_R=as.factor(ifelse(mpaa_rating == 'R', 'yes', 'no'))) %>%
+          mutate(oscar_season=as.factor(ifelse(thtr_rel_month %in% c(10:12), 'yes', 'no'))) %>%
+          mutate(summer_season=as.factor(ifelse(thtr_rel_month %in% c(5:8), 'yes', 'no')))
+```
+
+
+## Part 3: Exploratory data analysis
+
+Let us begin by first constructing a subset from the original dataset by selecting the variables that will be used in modelling. Susequently we will remove the incomplete entries. Also, I will be constructing a new variable: oscar_win that will track weather actor, actress or director involved in the moview has had an oscar win.
+
+feature_film
+drama
+runtime
+mpaa_rating_R
+thtr_rel_year
+oscar_season
+summer_season
+imdb_rating
+imdb_num_votes
+critics_score
+best_pic_nom
+best_pic_win
+best_actor_win
+best_actress_win
+best_dir_win
+top200_box
+
+
+```{r dat-preprocessing}
+mv <- movies %>% select(audience_score, feature_film, drama, runtime, mpaa_rating_R, thtr_rel_year, oscar_season, summer_season, imdb_rating, imdb_num_votes, critics_score, best_pic_nom, best_pic_win, best_actor_win, best_actress_win, best_dir_win, top200_box)
+
+mv <- na.exclude(mv)
+
+mv <- mutate(mv, oscar = ifelse(best_pic_nom == "yes", "yes", ifelse(best_pic_win == "yes", "yes",  ifelse(best_actor_win == "yes", "yes", ifelse(best_actress_win == "yes", "yes", ifelse(best_dir_win == "yes", "yes", "no"))))))
+```
+
+Focusing our attention to the variables that we wish to explore further, we observe that there are two types of variables:
+
+- Categorical variables with two factors: feature_film, drama, mpaa_rating_R, oscar_season, summer_season, oscar, and top200_box. Note that I am now having just one variable oscar instead of 5 variabled. This done because in the privious analysis of the dataset in the 'Linear Regression Module' we proved that using a proxy variable is a better approach.
+
+- Continuous variables: runtime, imdb_rating, imdb_num_votes, and critics_score.
+
+Now let us briefly explore theser variables
+
+####Categorical Variables exploration
+
+```{r}
+mv_cat <- mv %>% gather('attribute','Yes_or_No', c(feature_film, drama, mpaa_rating_R, oscar_season, summer_season, oscar, top200_box))
+ggplot(data=mv_cat,aes(x=attribute, y= audience_score,fill=Yes_or_No))+geom_boxplot() + coord_flip()
+```
+
+The above plot shows that feature_film variable and top200_box are the two categorical variables that seem to have a discernable relationship with the audience_score
+
+####Continuous Variables exploration
+
+```{r Cont Analysis}
+pA <- ggplot(data = mv, aes(x = runtime)) + geom_histogram(colour = "black", fill = "green", binwidth = .5)
+pB <- ggplot(data = mv, aes(x = imdb_rating)) + geom_histogram(colour = "black", fill = "cyan", binwidth = .2)
+pC <- ggplot(data = mv, aes(x = imdb_num_votes)) + geom_histogram(colour = "black", fill = "yellow", binwidth = 2000)
+pD <- ggplot(data = mv, aes(x = critics_score)) + geom_histogram(colour = "black", fill = "orange", binwidth = 2)
+pE <- ggplot(data = mv, aes(x = audience_score)) + geom_histogram(colour = "black", fill = "magenta", binwidth = 2)
+
+
+grid.arrange(pA, pB, pC, pD, pE, nrow = 2, ncol = 3)
+```
+
+#####The plots above show that our explanatory variable audience_score is skewed to the right.
+
+####Relationship Exploration: audience_score and the new variables
+
+```{r}
+BI_1 <- bayes_inference(y = audience_score, x = feature_film, data = mv, statistic = "mean", type = "ht", null = 0, alternative = "twosided")
+BI_2 <- bayes_inference(y = audience_score, x = drama, data = mv, statistic = "mean", type = "ht", null = 0, alternative = "twosided")
+BI_3 <- bayes_inference(y = audience_score, x = mpaa_rating_R, data = mv, statistic = "mean", type = "ht", null = 0, alternative = "twosided")
+BI_4 <- bayes_inference(y = audience_score, x = oscar_season, data = mv, statistic = "mean", type = "ht", null = 0, alternative = "twosided")
+
+```
+
+Faeture Film: Bayes factor of H2 against H1 also shows a strong evedience that feature film is significant in affecting final scores
+Drama: The bayesian factor is 22.6, showing a positive evidence of H2 against H1. It means drama genre definitely influences the final score
+R Rating: The bayesian factor is 24, showing a positive evidence of H1 against H2. It means that R rating cannot affect the final score.
+Oscar Season: The bayesian factor is 13.4 with positive evidence of H1 against H2. The Oscar seasons cannot affect the final rating.
+
+* * *
+## Part 4: Modeling
+
+We begin modelling exercise by selecting a full model, i.e, choose all avaliable variables to model the audience_score. Subsequently we remove variables from the model, one at a time, until BIC can not be lowered. 
+This approach taakes as input: a full model, and a penalty parameter k. We find the best model according to BIC i.e. k=log(n).
+
+
+```{r}
+library(MASS)
+lm1 <- lm(audience_score ~ . - audience_score, data = mv)
+score_step <- stepAIC(lm1, trace = FALSE)
+score_step$anova
+```
+
+The results above show that the final model is significantly different from the full model that we started with. Another interesting thing to note here is that the of the new features only mpaa_rating_R variable is left. And this is indeed in line with what we observed during exploratory analysis.
+
+####BMA
+
+With several models, each being quite plausible, choosing only one ignores the inherent uncertainty involved in choosing the variables to include in the model. To adress this we implement Bayesian model averaging (BMA). Multiple models are averaged to obtain posteriors of coefficients and predictions from new data.
+
+```{r}
+bma1 <- bas.lm(audience_score ~ . - audience_score, data = mv,
+                   prior = "BIC", 
+                   modelprior = uniform())
+bma1
+summary(bma1)
+image(bma1,rotate=FALSE)
+```
+
+The most likely model, which has posterior probability of 0.269, includes only an intercept. While a posterior probability of 0.269 sounds small, it is much larger than the uniform prior probability assigned to it, since there are 2^17. possible models. By looking at the image, we can see that the most probable model is the one with only intercept.
+
+###Model DIagnostics
+
+```{r}
+par(mfrow=c(2,2))
+plot(bma1, which=c(1, 2), ask=FALSE)
+plot(bma1, which=4, ask=FALSE, cex.lab=0.5)
+```
+
+
+* * *
+
+## Part 5: Prediction
+
+The predictive capability of bayesian model averaging was tested using data for a movie that was not included in the analysis data set. The movie chosen was Deadpool which was released early in 2016.  The information for this movie was obtained from the IMDb and Rotten Tomatoes web sites in order to be consistent with the analysis data 
+
+```{r}
+Deadpool <- data.frame(runtime=108,
+                         thtr_rel_year=2016,
+                         imdb_rating=8.1,
+                         imdb_num_votes=500049,
+                         critics_score=84,
+                         audience_score=0,
+                         best_pic_nom=factor("no", levels=c("no", "yes")),
+                         best_pic_win=factor("no", levels=c("no", "yes")),
+                         best_actor_win=factor("no", levels=c("no", "yes")),
+                         best_actress_win=factor("no", levels=c("no", "yes")),
+                         best_dir_win=factor("no", levels=c("no", "yes")),
+                         top200_box=factor("no", levels=c("no", "yes")),
+                         feature_film=factor("yes", levels=c("no", "yes")),
+                         drama=factor("no", levels=c("no", "yes")),
+                         mpaa_rating_R=factor("yes", levels=c("no", "yes")),
+                         oscar_season=factor("no", levels=c("no", "yes")),
+                         summer_season=factor("no", levels=c("no", "yes")),
+                         oscar = factor("no", levels=c("no", "yes")))
+
+BMA_DP <- predict(bma1, newdata=Deadpool, estimator="BMA", se.fit=TRUE)
+
+# Calculate 95% margin of error for the prediction interval.
+BMA_DP_pred <- qt(0.95, df=BMA_DP$se.bma.pred[1]) *
+                     mean(BMA_DP$se.bma.pred)
+
+# Show prediction results.
+df <- data.frame(t="Deadpool",
+                 p=sprintf("%2.1f", BMA_DP$Ybma),
+                 i=sprintf("%2.1f - %2.1f", BMA_DP$Ybma - BMA_DP_pred,
+                           BMA_DP$Ybma + BMA_DP_pred),
+                 r=84)
+colnames(df) <- c("Movie Title", "Predicted Rating", "95% Prediction Interval", 
+                  "Actual Rating")
+print(df)
+
+
+```
+
+The true audience score for the movie is 84. The model prediction is 88 with a 95% prediction interval of 69.8 to 106.4 
+
+## Part 6: Conclusion
+The relationship between audience score and the varaibles in movies dataset was analysed in project. An Exploratory Data Analysis was performed for the five derived variables. A Bayesian Information criterion backwards elimination produced a model that was scrutinized using Bayesian Posterior Probabilities. The model was used to predict score of a recent Movie and the results were positive with the predicted score close to the actual score, and the actual scoore within the 95% connfidence interval
+
+
+>>>>>>> 7017f4d0c6df428dba24d0c4370d3d08804dcbe2
